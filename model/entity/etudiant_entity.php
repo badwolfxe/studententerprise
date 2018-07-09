@@ -20,8 +20,20 @@ function insertEtudiant(string $nom, string $prenom, string $date_naissance, str
     /* @var $connection PDO */
     global $connection;
 
-    $query = "INSERT INTO member (firstname, lastname, picture)
-                VALUES (:firstname, :lastname, :picture);";
+    $query = "INSERT INTO etudiant (
+                nom, 
+                prenom, 
+                date_naissance,
+                numero_tel,
+                cv,
+                lettre_motivation,
+                niveau_etude_id,
+                contrat_id,
+                actif,
+                date_debut_contrat,
+                date_fin_contrat
+                )
+                VALUES (Chassaing, Clémence, , :numero_tel, :cv, :lettre_motivation, :niveau_etude_id, :contrat_id, :actif, :date_debut_contrat, :date_fin_contrat);";
 
     $stmt = $connection->prepare($query);
     $stmt->bindParam(":firstname", $firstname);
