@@ -9,15 +9,14 @@ getHeader("Accueil");
 ?>
 
 <header class="home-banner">
-    <h1>Bienvenue sur <strong>Ecolidaire</strong></h1>
-    <p>Let's go Green!</p>
+ 
 </header>
 
-<section class="container">
+<!--<section class="container">
     <h2>Nos dernières actions</h2>
     <div class="actions">
         
     </div>
-</section>
+</section>-->
 
 <?php getFooter(); ?>
