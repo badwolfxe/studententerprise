@@ -1,6 +1,6 @@
 <?php
 
-function getLastRecettes(){
+function getAllEtudiant(){
     global $connection;    
     
     $query = "SELECT
@@ -18,4 +18,6 @@ function getLastRecettes(){
                 contrat.label
             FROM etudiant
             INNER JOIN niveau_etude ON etudiant.niveau_etude_id
-            INNER JOIN contrat ON etudiant.contrat_id;"
+            INNER JOIN contrat ON etudiant.contrat_id
+            ;";
+    
