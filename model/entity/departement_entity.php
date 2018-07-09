@@ -5,10 +5,10 @@ function getAllDepartement() {
     global $connection;
 
     $query = "SELECT
-                departement.id,
-                departement.label,
-                departement.code
-            FROM departement;";
+                departements.id,
+                departements.label,
+                departements.code
+            FROM departements;";
 
     $stmt = $connection->prepare($query);
     $stmt->execute();
