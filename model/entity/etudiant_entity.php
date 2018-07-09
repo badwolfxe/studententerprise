@@ -1,13 +1,13 @@
 <?php
 
-function getAllMembers() {
+function getAllEtudiant() {
     /* @var $connection PDO */
     global $connection;
 
     $query = "SELECT
-                member.*,
-                CONCAT(member.firstname, ' ', member.lastname) AS fullname
-            FROM member;";
+                etudiant.*,
+                CONCAT(etudiant.nom, ' ', etudiant.prenom) AS fullname
+            FROM etudiant;";
 
     $stmt = $connection->prepare($query);
     $stmt->execute();
@@ -15,25 +15,8 @@ function getAllMembers() {
     return $stmt->fetchAll();
 }
 
-function getAllMembersByProject(int $id) {
-    /* @var $connection PDO */
-    global $connection;
 
-    $query = "SELECT
-                member.*,
-                CONCAT(member.firstname, ' ', member.lastname) AS fullname
-            FROM member
-            INNER JOIN project_has_member ON project_has_member.member_id = member.id
-            WHERE project_has_member.project_id = :id;";
-
-    $stmt = $connection->prepare($query);
-    $stmt->bindParam(":id", $id);
-    $stmt->execute();
-
-    return $stmt->fetchAll();
-}
-
-function insertMember(string $firstname, string $lastname, string $picture) {
+function insertEtudiant(string $nom, string $prenom, string $date_naissance, string $numero_tel, string $cv, string $lettre_motivation, $niveau_etu) {
     /* @var $connection PDO */
     global $connection;
 
