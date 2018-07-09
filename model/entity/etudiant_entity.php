@@ -4,9 +4,7 @@ function getAllEtudiant() {
     /* @var $connection PDO */
     global $connection;
 
-    $query = "SELECT
-                etudiant.*,
-                CONCAT(etudiant.nom, ' ', etudiant.prenom) AS fullname
+    $query = "SELECT *
             FROM etudiant;";
 
     $stmt = $connection->prepare($query);
@@ -14,7 +12,6 @@ function getAllEtudiant() {
 
     return $stmt->fetchAll();
 }
-
 
 function insertEtudiant(string $nom, string $prenom, string $date_naissance, string $numero_tel, string $cv, string $lettre_motivation, $niveau_etu) {
     /* @var $connection PDO */

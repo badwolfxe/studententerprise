@@ -1,13 +1,12 @@
 <?php
-
 function getUserByEmailPassword(string $email, string $password) {
-    /* @var $connection PDO */
+  /* @var $connection PDO */
     global $connection;
 
     $query = "SELECT *
-            FROM user
-            WHERE email = :email
-            AND password = SHA1(:password);";
+            FROM utilisateur
+            WHERE utilisateur.mail = :email
+            AND utilisateur.mdp = SHA1(:password);";
 
     $stmt = $connection->prepare($query);
     $stmt->bindParam(":email", $email);
@@ -17,12 +16,13 @@ function getUserByEmailPassword(string $email, string $password) {
     return $stmt->fetch();
 }
 
+
 function getOneUser(int $id) {
     /* @var $connection PDO */
     global $connection;
 
     $query = "SELECT *
-            FROM user
+            FROM utilisateur
             WHERE id = :id;";
 
     $stmt = $connection->prepare($query);

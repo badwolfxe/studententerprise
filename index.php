@@ -2,6 +2,8 @@
 require_once 'lib/functions.php';
 require_once 'model/database.php';
 
+$liste_etudiant = getAllEtudiant();
+
 // Déclaration des variables
 /*$list_projects = getAllProjects(3);*/
 
@@ -12,7 +14,6 @@ getHeader("Accueil");
  
 </header>
 
-<<<<<<< HEAD
 
 <div class="formulaire-connexion">
     
@@ -25,16 +26,10 @@ getHeader("Accueil");
     
 </div>
 
-
-
-
-=======
-<!--<section class="container">
-    <h2>Nos dernières actions</h2>
-    <div class="actions">
-        
-    </div>
-</section>-->
->>>>>>> 621ab728348856353bec4cd7b04ba59166bec8ec
+<?php foreach ($liste_etudiant as $etudiant) : ?>
+            
+<p> <?php echo $etudiant['nom'] ?></p>
+ <?php endforeach; ?>
 
 <?php getFooter(); ?>
+
