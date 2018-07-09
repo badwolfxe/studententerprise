@@ -1,5 +1,6 @@
 body, html, main {
     height: 100%;
+    position: relative;
 }
 
 body {
@@ -96,5 +97,16 @@ nav.main-nav > ul > li:last-child {
     background-image: url('../images/background-home.jpg');
     background-position: center;
     background-size: cover;
+}
+
+/* Login */
+
+.formulaire-connexion {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #FFF;
+    padding: 2em;
 }
 

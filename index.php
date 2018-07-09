@@ -12,13 +12,20 @@ getHeader("Accueil");
  
 </header>
 
-<!--<section class="container">
-    <h2>Nos dernières actions</h2>
-    <div class="actions">
-        <?php foreach ($list_projects as $project) : ?>
-            <?php include 'include/project_inc.php'; ?>
-        <?php endforeach; ?>
-    </div>
-</section>-->
+
+<div class="formulaire-connexion">
+    
+ <?php include 'admin/login.php'; ?>
+    
+    <br>
+    
+    <?php include 'nouveau-utilisateur.php'; ?>
+    
+    
+</div>
+
+
+
+
 
 <?php getFooter(); ?>
