@@ -1,0 +1,12 @@
+.img-thumbnail {
+    height: 150px;
+    width: 150px;
+}
+
+/**
+ * CORRECTION DU CSS DE DATATABLES
+ */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 0;
+    margin: 0;
+}
