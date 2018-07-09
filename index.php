@@ -12,6 +12,7 @@ getHeader("Accueil");
  
 </header>
 
+<<<<<<< HEAD
 
 <div class="formulaire-connexion">
     
@@ -27,5 +28,13 @@ getHeader("Accueil");
 
 
 
+=======
+<!--<section class="container">
+    <h2>Nos dernières actions</h2>
+    <div class="actions">
+        
+    </div>
+</section>-->
+>>>>>>> 621ab728348856353bec4cd7b04ba59166bec8ec
 
 <?php getFooter(); ?>
