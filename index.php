@@ -3,7 +3,7 @@ require_once 'lib/functions.php';
 require_once 'model/database.php';
 
 // Déclaration des variables
-$list_projects = getAllProjects(3);
+/*$list_projects = getAllProjects(3);*/
 
 getHeader("Accueil");
 ?>

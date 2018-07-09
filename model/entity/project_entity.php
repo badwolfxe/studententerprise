@@ -1,8 +1,8 @@
 <?php
-
-function getAllProjects(int $limit = 999) {
+/*
+function getAllProjects(int $limit = 999){*/
     /* @var $connection PDO */
-    global $connection;
+  /*  global $connection;
 
     $query = "SELECT
                 project.id,
@@ -26,11 +26,11 @@ function getAllProjects(int $limit = 999) {
     $stmt->execute();
 
     return $stmt->fetchAll();
-}
+}*/
 
-function getOneProject(int $id) {
-    /* @var $connection PDO */
-    global $connection;
+/*function getOneProject(int $id) {
+    *//* @var $connection PDO */
+   /* global $connection;
 
     $query = "SELECT
                 project.*,
@@ -46,11 +46,11 @@ function getOneProject(int $id) {
     $stmt->execute();
 
     return $stmt->fetch();
-}
-
+}*/
+/*
 function insertProject(string $title, string $picture, string $description, float $price, string $date_start, string $date_end, int $category_id) {
-        /* @var $connection PDO */
-    global $connection;
+      */  /* @var $connection PDO */
+   /* global $connection;
 
     $query = "INSERT INTO project (title, picture, description, price, date_start, date_end, category_id)
                 VALUES (:title, :picture, :description, :price, :date_start, :date_end, :category_id);";
@@ -64,4 +64,4 @@ function insertProject(string $title, string $picture, string $description, floa
     $stmt->bindParam(":date_end", $date_end);
     $stmt->bindParam(":category_id", $category_id);
     $stmt->execute();
-}
+}*/
