@@ -38,15 +38,26 @@ function getOneUser(int $id) {
     return $stmt->fetch();
 }
 
-function insertUtilisateur(string $email, string $mot_de_passe) {
+function insertUtilisateur(string $email, string $mot_de_passe, string $type) {
     /* @var $connection PDO */
     global $connection;
 
     $query = "INSERT INTO utilisateur (mail, mdp, date_inscritpion)
-                VALUES (:email, SHA1(:motdepasse), NOW());";
+                VALUES (:email, SHA1(:motdepasse), NOW()); ";
 
     $stmt = $connection->prepare($query);
     $stmt->bindParam(":email", $email);
     $stmt->bindParam(":motdepasse", $mot_de_passe);
+    $stmt->execute();
+
+    $id = $connection->lastInsertId();
+
+    if ($type == 'etudiant') {
+        $query = "INSERT INTO etudiant (id) VALUES (:id);";
+    } elseif ($type == 'entreprise') {
+        $query = "INSERT INTO entreprise (id) VALUES (:id);";
+    }
+    $stmt = $connection->prepare($query);
+    $stmt->bindParam(":id", $id);
     $stmt->execute();
 }
