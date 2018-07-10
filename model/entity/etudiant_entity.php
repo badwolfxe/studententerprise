@@ -4,14 +4,51 @@ function getAllEtudiant() {
     /* @var $connection PDO */
     global $connection;
 
-    $query = "SELECT *
-            FROM etudiant;";
+    $query = "SELECT 
+etudiant.nom AS nom,
+etudiant.prenom AS prenom,
+departement_id AS departementid,
+niveau_etude.id AS niveau,
+niveau_etude.label AS labelniveau,
+contrat.label AS labelcontrat
+FROM etudiant
+INNER JOIN departement_has_etudiant ON departement_has_etudiant.etudiant_id = etudiant.id
+INNER JOIN niveau_etude ON niveau_etude.id = etudiant.niveau_etude_id
+INNER JOIN contrat ON contrat.id = etudiant.contrat_id";
 
     $stmt = $connection->prepare($query);
     $stmt->execute();
 
     return $stmt->fetchAll();
 }
+
+function getAllDepartements() {
+    /* @var $connection PDO */
+    global $connection;
+
+    $query = "SELECT 
+        departement.label AS labeldepartement
+        FROM departement;";
+
+    $stmt = $connection->prepare($query);
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
+
+function getAllAvatarsbyEtudiant() {
+    global $connection;
+
+    $query = "
+    SELECT
+	utilisateur.avatar AS avatar
+    FROM utilisateur;
+    ";
+    $stmt = $connection->prepare($query);
+    $stmt->execute();
+
+    return $stmt->fetchAll();
+}   
+
 
 function insertEtudiant(string $nom, string $prenom, string $date_naissance, string $numero_tel, string $cv, string $lettre_motivation, $niveau_etu) {
     /* @var $connection PDO */
