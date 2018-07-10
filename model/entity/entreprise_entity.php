@@ -19,19 +19,23 @@ function getAllEntreprise() {
     return $stmt->fetchAll();
 }
 
-function getOneEntreprise($id) {
-    global $connection;
+function getEntreprise($id){
+    global $connection;    
+    
+    $query = "SELECT
+                entreprise.id,
+                entreprise.nom AS nom,
+                utilisateur.avatar AS avatar,
+                utilisateur.mail AS mail
+            FROM entreprise
+            INNER JOIN utilisateur ON utilisateur.id = entreprise.id
+            WHERE entreprise.id = :id;
+	  ";
 
-    $query = "
-        SELECT
-            entreprise.id,
-            entreprise.nom
-        FROM entreprise
-        WHERE entreprise.id = :id;";
-    $stmt = $connection->prepare($query);
-    $stmt->bindParam(':id', $id);
-    $stmt->execute();
+$stmt = $connection->prepare($query);
+$stmt->bindParam(':id', $id);
+$stmt->execute();
 
-    return $stmt->fetchAll();
+return $stmt->fetch();
 }
 

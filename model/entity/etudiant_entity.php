@@ -110,13 +110,16 @@ function getEtudiant($id){
                 etudiant.nom AS nom,
                 etudiant.prenom,
                 DATE_FORMAT(etudiant.date_naissance, '%e %M %Y') AS date_naissance_format,
-                etudiant.numero_tel,
-                etudiant.cv,
-                etudiant.lettre_motivation,
+                etudiant.numero_tel AS telephone,
+                etudiant.cv AS cv,
+                etudiant.lettre_motivation AS lm,
                 niveau_etude.label,
-                etudiant.contrat_id,
-                etudiant.actif
+                contrat.label AS contrat,
+                etudiant.actif,
+                utilisateur.avatar AS avatar,
+                utilisateur.mail AS mail
             FROM etudiant
+            INNER JOIN utilisateur ON utilisateur.id = etudiant.id
             INNER JOIN contrat ON etudiant.contrat_id = contrat.id
             INNER JOIN niveau_etude ON etudiant.niveau_etude_id = niveau_etude.id
             WHERE etudiant.id = :id;

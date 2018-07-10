@@ -16,7 +16,15 @@ $specialites = getAllSpecialiteByEtudiant($id);
 
 ?>
 
-<h3><?php echo $etudiant['nom']; ?></h3>
+<img src="images/<?php echo $etudiant['avatar']?>">
+
+<h3><?php echo $etudiant['nom'] .' ' . $etudiant['prenom'];?></h3>
+<h3><?php echo $etudiant['date_naissance_format'];?></h3>
+<p><?php echo $etudiant['mail']; ?></p>
+<p><?php echo $etudiant['telephone']; ?></p>
+<p><?php echo $etudiant['contrat']; ?></p>
+<p><?php echo $etudiant['cv']; ?></p>
+<p><?php echo $etudiant['lm']; ?></p>
 
 <?php foreach ($departements as $departement) : ?>
 <p><?php echo $departement['label']; ?></p>
