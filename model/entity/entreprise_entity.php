@@ -1,13 +1,17 @@
 <?php
 
+
 function getAllEntreprise() {
     /* @var $connection PDO */
     global $connection;
 
     $query = "SELECT
-                entreprise.id,
-                entreprise.nom
-            FROM entreprise;";
+            entreprise.id,
+            entreprise.nom,
+            utilisateur.mail,
+            utilisateur.avatar
+        FROM entreprise
+        INNER JOIN utilisateur ON utilisateur.id = entreprise.id;";
 
     $stmt = $connection->prepare($query);
     $stmt->execute();
