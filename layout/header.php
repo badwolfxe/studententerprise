@@ -12,7 +12,7 @@
     <header class="site-header">
         
         <div class="container main-header">
-           <? php getHeader("Accueil");?>
+           <?php getHeader("Accueil"); ?>
         </div>
     </header>
 
