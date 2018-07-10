@@ -17,7 +17,7 @@ $departements = getAllDepartementByEtudiant($id);
 
 <h3><?php echo $etudiant['nom']; ?></h3>
 
-<?php foreach $departements as $departement : ?>
+<?php foreach ($departements as $departement) : ?>
 <h3><?php echo $departement['label']; ?></h3>
 <?php endforeach ;?>
 
