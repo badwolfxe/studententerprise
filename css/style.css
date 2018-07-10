@@ -110,3 +110,17 @@ nav.main-nav > ul > li:last-child {
     padding: 2em;
 }
 
+
+/* Carte Etudiant */
+
+section.liste-etudiant {
+    display: flex;
+}
+
+.etudiant-carte {
+    background: #0764;
+    padding: 20px;
+    margin: 20px 20px;
+    flex: 30%;
+}
+
