@@ -1,5 +1,5 @@
 <?php require_once '../layout/header.php'; ?>
 
-<h1>Admin</h1>
+<h1>Etudiant</h1>
 
 <?php require_once '../layout/footer.php'; ?>
