@@ -8,7 +8,7 @@ function getAllDepartement() {
                 departements.id,
                 departements.label,
                 departements.code
-            FROM departements;";
+            FROM departement;";
 
     $stmt = $connection->prepare($query);
     $stmt->execute();
