@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost
--- Généré le :  mar. 10 juil. 2018 à 07:13
+-- Généré le :  lun. 09 juil. 2018 à 13:53
 -- Version du serveur :  5.6.38
 -- Version de PHP :  7.2.1
 
@@ -11,7 +11,7 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 --
--- Base de données :  `atelier_dc3`
+-- Base de données :  `atelier-dc3`
 --
 
 -- --------------------------------------------------------
@@ -445,3 +445,7 @@ ALTER TABLE `etudiant`
 
 --
 -- Contraintes pour la table `etudiant_has_specialite`
+--
+ALTER TABLE `etudiant_has_specialite`
+  ADD CONSTRAINT `fk_etudiant_has_specialite_etudiant1` FOREIGN KEY (`etudiant_id`) REFERENCES `etudiant` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_etudiant_has_specialite_specialite1` FOREIGN KEY (`specialite_id`) REFERENCES `specialite` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;

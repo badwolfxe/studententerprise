@@ -8,6 +8,10 @@ body {
     font-family: 'Oxygen', sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
 .cta-header > .container {
     display: flex;
     justify-content: center;
@@ -124,3 +128,28 @@ section.liste-etudiant {
     flex: 30%;
 }
 
+/* Page Attente */
+
+.page-attente {
+    padding: 20px;
+    text-align: center;
+}
+
+.page-attente a {
+    display: block;
+    max-width: 200px;
+    background: #975;
+    padding: 20px;
+    color: #FFF;
+    margin: 20px auto;
+    border: 1px solid #FFF;
+    transition: all, .5s;
+}
+
+
+.page-attente a:hover {
+    color: #975;
+    border: 1px solid #975;
+    background: #FFF;
+    transition: all, .5s;
+}

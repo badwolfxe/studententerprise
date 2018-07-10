@@ -132,7 +132,7 @@ function getEtudiant($id){
                 etudiant.actif,
                 DATE_FORMAT(etudiant.date_debut_contrat, '%e %M %Y') AS debut_contrat,
                 DATE_FORMAT(etudiant.date_fin_contrat, '%e %M %Y') AS fin_contrat,
-                CONCAT(etudiant.prenom, '.' , LEFT(etudiant.nom, 1)) AS etudiant,
+                CONCAT(etudiant.prenom, '.' , LEFT(etudiant.nom, 1)) AS etudiant
             FROM etudiant
             INNER JOIN contrat ON etudiant.contrat_id = contrat.id.id
             INNER JOIN niveau_etude ON etudiant.niveau_etude_id = niveau_etude.id
