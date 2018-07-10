@@ -13,13 +13,10 @@ if (isset($user['id'])) {
     $_SESSION['id'] = $user['id'];
     
     if (!is_null($user['admin'])) {
-        echo 'admin';
         header('Location: admin/index.php');
     } else if (!is_null($user['etudiant'])) {
-        echo 'etudiant';
         header('Location: etudiant/index.php');
     } else if (!is_null($user['entreprise'])) {
-        echo 'entreprise';
         header('Location: entreprise/index.php');
     }
 } else {
