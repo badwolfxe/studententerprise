@@ -13,6 +13,7 @@
         
         <div class="container main-header">
            <?php getHeader("Accueil"); ?>
+            <?php include 'menu.php'; ?>
         </div>
     </header>
 
