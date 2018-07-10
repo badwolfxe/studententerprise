@@ -8,13 +8,17 @@ require_once 'model/database.php';
 getHeader("Accueil");
 ?>
 
+<div class="page-attente">
+    
+    
+
 Votre inscription à bien été pris en compte.
 Veuillez attendre que l'administrateur confirme votre inscription
 
 <a href="index.php">Retour à l'accueil</a>
 
 
-
+</div>
 <?php getFooter(); ?>
 
 <?php
