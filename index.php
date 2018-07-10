@@ -2,7 +2,6 @@
 require_once 'lib/functions.php';
 require_once 'model/database.php';
 
-$id = $_GET['id'];
 $liste_etudiant = getAllEtudiant();
 
 // Déclaration des variables
@@ -18,7 +17,19 @@ getHeader("Accueil");
 
 <div class="formulaire-connexion">
     
- <?php include 'admin/login.php'; ?>
+     <section>
+        <form action="login.php" method="POST">
+            <div>
+                <label>Email :</label>
+                <input type="email" name="email">
+            </div>
+            <div>
+                <label>Mot de passe :</label>
+                <input type="password" name="password">
+            </div>
+            <input type="submit">
+        </form>
+    </section> 
     
     <br>
     

@@ -3,10 +3,16 @@ function getUserByEmailPassword(string $email, string $password) {
   /* @var $connection PDO */
     global $connection;
 
-    $query = "SELECT *
-            FROM utilisateur
-            WHERE utilisateur.mail = :email
-            AND utilisateur.mdp = SHA1(:password);";
+    $query = "SELECT
+                    utilisateur.*,
+                    admin.id AS admin,
+                    etudiant.id AS etudiant,
+                    entreprise.id AS entreprise
+                FROM utilisateur
+                LEFT JOIN admin ON admin.id = utilisateur.id
+                LEFT JOIN etudiant ON etudiant.id = utilisateur.id
+                LEFT JOIN entreprise ON entreprise.id = utilisateur.id
+                WHERE utilisateur.id = 1;";
 
     $stmt = $connection->prepare($query);
     $stmt->bindParam(":email", $email);
