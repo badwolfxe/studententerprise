@@ -153,3 +153,38 @@ section.liste-etudiant {
     background: #FFF;
     transition: all, .5s;
 }
+
+
+/* Page Etudiant */
+
+a.btn {
+    background: #975;
+    padding: 20px;
+    display: block;
+    max-width: 200Px;
+    text-align: center;
+    margin: 20px auto;
+    color: #FFF;
+    border: 1px solid #FFF;
+    transition: all, .5s;
+}
+
+a.btn.mdp {
+    background-color: crimson;
+    border: 1px solid #FFF;
+    transition: all, .5s;
+}
+
+a.btn:hover {
+    color: #975;
+    border: 1px solid #975;
+    background: #FFF;
+    transition: all, .5s;
+}
+
+a.btn.mdp:hover {
+    color: crimson;
+    background: #fff;
+    border: 1px solid crimson;
+    transition: all, .5s;
+}

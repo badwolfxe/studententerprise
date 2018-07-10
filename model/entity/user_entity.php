@@ -61,3 +61,17 @@ function insertUtilisateur(string $email, string $mot_de_passe, string $type) {
     $stmt->bindParam(":id", $id);
     $stmt->execute();
 }
+
+function modifUtilisateur($mot_de_passe, $email) {
+    global $connection;
+
+    $query = "UPDATE utilisateur 
+        SET mdp = :mdp
+        WHERE mail = :mail
+    ;";
+
+    $stmt = $connection->prepare($query);
+    $stmt->bindParam(':mdp', $mot_de_passe);
+    $stmt->bindParam(':mail', $email);
+    $stmt->execute();
+}
