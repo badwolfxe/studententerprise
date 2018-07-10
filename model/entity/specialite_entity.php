@@ -21,11 +21,11 @@ function getAllSpecialiteByEtudiant($id) {
     $query = "
         SELECT
 		specialite.id,
-            specialite.label
+        specialite.label
         FROM specialite
-        INNER JOIN specialite_has_etudiant
-            ON specialite_has_etudiant.specialite_id = specialite.id
-        WHERE specialite_has_etudiant.etudiant_id = :id;";
+        INNER JOIN etudiant_has_etudiant
+            ON etudiant_has_etudiant.specialite_id = specialite.id
+        WHERE etudiant_has_etudiant.etudiant_id = :id;";
     $stmt = $connection->prepare($query);
     $stmt->bindParam(':id', $id);
     $stmt->execute();
