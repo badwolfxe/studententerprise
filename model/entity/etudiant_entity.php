@@ -35,20 +35,6 @@ function getAllDepartements() {
     return $stmt->fetchAll();
 }
 
-function getAllAvatarsbyEtudiant() {
-    global $connection;
-
-    $query = "
-    SELECT
-	utilisateur.avatar AS avatar
-    FROM utilisateur;
-    ";
-    $stmt = $connection->prepare($query);
-    $stmt->execute();
-
-    return $stmt->fetchAll();
-}   
-
 
 function insertEtudiant(string $nom, string $prenom, string $date_naissance, string $numero_tel, string $cv, string $lettre_motivation, $niveau_etu) {
     /* @var $connection PDO */
@@ -121,27 +107,23 @@ function getEtudiant($id){
     
     $query = "SELECT
                 etudiant.id,
-                etudiant.nom,
+                etudiant.nom AS nom,
                 etudiant.prenom,
                 DATE_FORMAT(etudiant.date_naissance, '%e %M %Y') AS date_naissance_format,
                 etudiant.numero_tel,
                 etudiant.cv,
                 etudiant.lettre_motivation,
-                etudiant.niveau_etude,
+                niveau_etude.label,
                 etudiant.contrat_id,
-                etudiant.actif,
-                DATE_FORMAT(etudiant.date_debut_contrat, '%e %M %Y') AS debut_contrat,
-                DATE_FORMAT(etudiant.date_fin_contrat, '%e %M %Y') AS fin_contrat,
-                CONCAT(etudiant.prenom, '.' , LEFT(etudiant.nom, 1)) AS etudiant
+                etudiant.actif
             FROM etudiant
-            INNER JOIN contrat ON etudiant.contrat_id = contrat.id.id
+            INNER JOIN contrat ON etudiant.contrat_id = contrat.id
             INNER JOIN niveau_etude ON etudiant.niveau_etude_id = niveau_etude.id
-            LEFT JOIN jaime ON jaime.recette_id = recette.id
-            WHERE etudiant.id = :etudiant;
+            WHERE etudiant.id = :id;
 	  ";
 
 $stmt = $connection->prepare($query);
-$stmt->bindParam(':etudiant_id', $id);
+$stmt->bindParam(':id', $id);
 $stmt->execute();
 
 return $stmt->fetch();

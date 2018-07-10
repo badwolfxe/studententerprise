@@ -13,7 +13,8 @@ function getUserByEmailPassword(string $email, string $password) {
                 LEFT JOIN admin ON admin.id = utilisateur.id
                 LEFT JOIN etudiant ON etudiant.id = utilisateur.id
                 LEFT JOIN entreprise ON entreprise.id = utilisateur.id
-                WHERE utilisateur.id = 1;";
+                WHERE utilisateur.mail = :email
+                AND utilisateur.mdp = MD5(:password);";
 
     $stmt = $connection->prepare($query);
     $stmt->bindParam(":email", $email);
