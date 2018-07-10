@@ -22,12 +22,11 @@ function getAllDepartementByEtudiant($id) {
 
     $query = "
         SELECT
-		departement.id,
-        departement.label
-        FROM departement
-        INNER JOIN departement_has_etudiant
-            ON departement_has_etudiant.departement_id = departement.id
-        WHERE departement_has_etudiant.etudiant_id = :id;";
+	departement.id,
+	departement.label
+    FROM departement_has_etudiant
+    INNER JOIN departement ON departement.id = departement_has_etudiant.departement_id
+    WHERE departement_has_etudiant.etudiant_id = :id;";
     $stmt = $connection->prepare($query);
     $stmt->bindParam(':id', $id);
     $stmt->execute();

@@ -11,10 +11,15 @@ getHeader("Espace étudiant");
 <?php
 $id = $_SESSION['id'];
 $etudiant = getEtudiant($id);
+$departements = getAllDepartementByEtudiant($id);
 
 ?>
 
 <h3><?php echo $etudiant['nom']; ?></h3>
+
+<?php foreach $departements as $departement : ?>
+<h3><?php echo $departement['label']; ?></h3>
+<?php endforeach ;?>
 
 
 <a class="btn deconnection" href="../admin/logout.php">Se déco</a>
