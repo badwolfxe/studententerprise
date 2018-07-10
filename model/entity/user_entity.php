@@ -1,6 +1,7 @@
 <?php
+
 function getUserByEmailPassword(string $email, string $password) {
-  /* @var $connection PDO */
+    /* @var $connection PDO */
     global $connection;
 
     $query = "SELECT
@@ -22,7 +23,6 @@ function getUserByEmailPassword(string $email, string $password) {
     return $stmt->fetch();
 }
 
-
 function getOneUser(int $id) {
     /* @var $connection PDO */
     global $connection;
@@ -38,19 +38,15 @@ function getOneUser(int $id) {
     return $stmt->fetch();
 }
 
-
-function insertUtilisateur(string $email,string $mot_de_passe) {
+function insertUtilisateur(string $email, string $mot_de_passe) {
     /* @var $connection PDO */
     global $connection;
 
-      $query = "INSERT INTO utilisateur (mail, mdp, date_inscritpion)
-                VALUES (:email, :motdepasse, :date_inscription);";
+    $query = "INSERT INTO utilisateur (mail, mdp, date_inscritpion)
+                VALUES (:email, SHA1(:motdepasse), NOW());";
 
     $stmt = $connection->prepare($query);
     $stmt->bindParam(":email", $email);
     $stmt->bindParam(":motdepasse", $mot_de_passe);
-    $newDate = new DateTime();
-    $newDate = $newDate->format('Y-m-d H:i:s');
-    $stmt->bindParam(":date_inscription", $newDate);
     $stmt->execute();
 }
