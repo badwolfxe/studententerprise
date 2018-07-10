@@ -7,12 +7,14 @@ function getAllEtudiant() {
     $query = "SELECT 
 etudiant.nom AS nom,
 etudiant.prenom AS prenom,
-departement_id AS departementid,
+etudiant.numero_tel AS telephone,
+DATE_FORMAT(etudiant.date_naissance, '%e %M %Y') AS date_naissance_format,
 niveau_etude.id AS niveau,
 niveau_etude.label AS labelniveau,
-contrat.label AS labelcontrat
+contrat.label AS contrat,
+utilisateur.mail AS mail
 FROM etudiant
-INNER JOIN departement_has_etudiant ON departement_has_etudiant.etudiant_id = etudiant.id
+INNER JOIN utilisateur ON utilisateur.id = etudiant.id
 INNER JOIN niveau_etude ON niveau_etude.id = etudiant.niveau_etude_id
 INNER JOIN contrat ON contrat.id = etudiant.contrat_id";
 
