@@ -15,17 +15,17 @@ function getAllSpecialite() {
     return $stmt->fetchAll();
 }
 
+
 function getAllSpecialiteByEtudiant($id) {
     global $connection;
 
     $query = "
         SELECT
-		specialite.id,
-        specialite.label
-        FROM specialite
-        INNER JOIN etudiant_has_etudiant
-            ON etudiant_has_etudiant.specialite_id = specialite.id
-        WHERE etudiant_has_etudiant.etudiant_id = :id;";
+	specialite.id,
+	specialite.label
+    FROM etudiant_has_specialite
+    INNER JOIN specialite ON specialite.id = etudiant_has_specialite.specialite_id
+    WHERE etudiant_has_specialite.etudiant_id = :id;";
     $stmt = $connection->prepare($query);
     $stmt->bindParam(':id', $id);
     $stmt->execute();

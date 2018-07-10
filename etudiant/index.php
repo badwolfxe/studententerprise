@@ -12,13 +12,18 @@ getHeader("Espace étudiant");
 $id = $_SESSION['id'];
 $etudiant = getEtudiant($id);
 $departements = getAllDepartementByEtudiant($id);
+$specialites = getAllSpecialiteByEtudiant($id);
 
 ?>
 
 <h3><?php echo $etudiant['nom']; ?></h3>
 
 <?php foreach ($departements as $departement) : ?>
-<h3><?php echo $departement['label']; ?></h3>
+<p><?php echo $departement['label']; ?></p>
+<?php endforeach ;?>
+
+<?php foreach ($specialites as $specialite) : ?>
+<p><?php echo $specialite['label']; ?></p>
 <?php endforeach ;?>
 
 
