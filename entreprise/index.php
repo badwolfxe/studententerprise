@@ -11,7 +11,7 @@ getHeader("Espace entreprise");
 <?php
 $id = $_SESSION['id'];
 $entreprise = getEntreprise($id);
-
+$departements = getAllDepartementByEtudiant($id);
 ?>
 
 <h3>Mes infos</h3>

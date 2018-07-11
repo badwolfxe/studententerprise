@@ -9,6 +9,7 @@ getHeader("Espace étudiant");
 
 <?php
 $etudiants = getAllEtudiant();
+$departement = getDepartementByEtudiant();
 
 ?>
 
@@ -20,7 +21,12 @@ $etudiants = getAllEtudiant();
 <p><?php echo $etudiant['mail']; ?></p>
 <p><?php echo $etudiant['telephone']; ?></p>
 <p><?php echo $etudiant['contrat']; ?></p>
+
 <?php endforeach ;?>
+
+<h3>DEPARTEMENT</h3>
+<p><?php echo $departement['label']; ?></p>
+
 
 
 <a class="btn deconnection" href="../admin/logout.php">Se déco</a>

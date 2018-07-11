@@ -24,6 +24,7 @@ function getUserByEmailPassword(string $email, string $password) {
     return $stmt->fetch();
 }
 
+
 function getOneUser(int $id) {
     /* @var $connection PDO */
     global $connection;
@@ -108,4 +109,18 @@ if (isset($_SESSION['id'])) {
 if (!isset($user['id'])) {
     header("Location: ../index.php");
 }
+}
+
+function updateUtilisateurActif(int $utilisateur_id, bool $actif){
+    global $connection;
+    
+    $query = "
+        UPDATE utilisateur
+        SET utilisateur.valide = :valide
+        WHERE utilisateur.id = :id;";
+
+    $stmt = $connection->prepare($query);
+    $stmt->bindParam(':valide', $actif);
+    $stmt->bindParam(':id', $utilisateur_id);
+    $stmt->execute();
 }

@@ -3,7 +3,6 @@ require_once 'lib/functions.php';
 require_once 'model/database.php';
 
 $liste_entreprise = getAllEntreprise();
-
 // Déclaration des variables
 /*$list_projects = getAllProjects(3);*/
 
@@ -36,6 +35,7 @@ getHeader("Accueil");
 <p> <?php echo $entreprise['mail'] ?></p>
 <button>Voir l'annonce</button>
  <?php endforeach; ?>
+    
     
     
 </div>
