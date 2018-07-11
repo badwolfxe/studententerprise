@@ -5,8 +5,9 @@ require_once '../model/database.php';
 getHeader("Espace entreprise");
 ?>
 
+<section class="container-page">
+
 <h1>Entreprise</h1>
-<p>coucou</p>
 
 <?php
 $id = $_SESSION['id'];
@@ -27,5 +28,7 @@ $entreprise = getEntreprise($id);
 <a class="btn deconnection" href="../admin/logout.php">Se déco</a>
 
 <a class="btn mdp" href="../mpd_form.php">Modifier son mot de passe</a>
+
+</section>
 
 <?php require_once '../layout/footer.php'; ?>

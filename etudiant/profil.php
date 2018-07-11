@@ -13,7 +13,7 @@ $specialites = getAllSpecialiteByEtudiant($id);
 
 ?>
 
-
+<section class="container-page">
 <img src="<?php echo SITE_URL ; ?>images/<?php echo $etudiant['avatar']?>">
 
 <h3><?php echo $etudiant['nom'] .' ' . $etudiant['prenom'];?></h3>
@@ -37,3 +37,4 @@ $specialites = getAllSpecialiteByEtudiant($id);
 
 
 <a class="btn deconnection" href="update-profil.php">Modifier mon profil</a>
+</section>

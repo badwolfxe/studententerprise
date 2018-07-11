@@ -13,7 +13,7 @@ $niveau_etudes = getAllEntity("niveau_etude");
 
 getHeader("Profil");
 ?>
-
+<section class="container-page">
 <form action="update.php" method="post" class="form-signin inscription">
     <h1 class="h3 mb-3 font-weight-normal">Modifier son profil</h1>
     
@@ -52,5 +52,6 @@ getHeader("Profil");
     
     <button class="btn btn-lg btn-primary btn-block" type="submit">Valider</button>
 </form>
+</section>
 
 <?php getFooter(); ?>
