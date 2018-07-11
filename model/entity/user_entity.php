@@ -98,3 +98,20 @@ function updateUtilisateurActif(int $utilisateur_id, bool $actif){
     $stmt->bindParam(':id', $utilisateur_id);
     $stmt->execute();
 }
+
+function updateImageUtilisateur(int $id, $name_file_avatar) {
+    /* @var $connection PDO */
+    global $connection;
+
+    $query = "UPDATE utilisateur
+                SET 
+                avatar = :avatar
+                WHERE id = :id;";
+
+    $stmt = $connection->prepare($query);
+    $stmt->bindParam(":avatar", $name_file_avatar);
+    $stmt->bindParam(":id", $id);
+    $stmt->execute();
+    
+  
+}

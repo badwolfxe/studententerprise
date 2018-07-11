@@ -203,15 +203,21 @@ a.btn.contact {
     margin: initial;
 }
 
-.zone-etudiants {
-    float:left;
+
+img.image-avatar {
+    width: 50%;
 }
 
 /* deuxieme menu */
+
+section.container-page.profil {
+    display: flex;
+}
+
 .deuxieme-menu {
-    float:left;
     padding-right:15px;
-    width:30%;
+    flex: 30%;
+    flex-grow: 1;
 }
 
 .deuxieme-menu ul li {

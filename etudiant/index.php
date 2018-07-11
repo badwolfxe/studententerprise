@@ -4,6 +4,13 @@ require_once '../model/database.php';
 
 $user = currentUser();
 
+$etudiant = getEtudiant($user["id"]);
+
+if (!isset($etudiant["id"])) {
+    header("Location: ../index.php");
+}
+
+
 getHeader("Espace étudiant");
 ?>
 

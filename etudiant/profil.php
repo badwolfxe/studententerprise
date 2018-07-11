@@ -14,10 +14,12 @@ $specialites = getAllSpecialiteByEtudiant($id);
 
 ?>
 
-<section class="container-page">
+<section class="container-page profil">
 <?php require_once '../layout/menu-etudiant.php';?>
-<img src="<?php echo SITE_URL ; ?>images/<?php echo $etudiant['avatar']?>">
 <div class="zone-etudiants">
+    
+<img class="image-avatar" src="<?php echo SITE_URL ; ?>uploads/<?php echo $etudiant['avatar']?>">
+<a class="btn" href="update-avatar.php">Modifier ou ajouter mon profil</a>
 <h3><?php echo $etudiant['nom'] .' ' . $etudiant['prenom'];?></h3>
 <h3><?php echo $etudiant['date_naissance_format'];?></h3>
 

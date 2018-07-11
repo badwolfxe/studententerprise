@@ -14,23 +14,23 @@ $niveau_etudes = getAllEntity("niveau_etude");
 getHeader("Profil");
 ?>
 <section class="container-page">
-<form action="update.php" method="post" class="form-signin inscription">
+<form action="update.php" method="post" class="form-signin inscription" enctype="multipart/form-data">
     <h1 class="h3 mb-3 font-weight-normal">Modifier son profil</h1>
     
     <label>Nom</label>
-    <input type="nom" name="nom" id="nom" class="form-control" placeholder="<?php echo $etudiant["nom"]; ?>" required autofocus>
+    <input type="nom" name="nom" id="nom" class="form-control" placeholder="<?php echo $etudiant["nom"]; ?>" >
     <br>
     <label>Prénom</label>
-    <input type="prenom" name="prenom" id="prenom" class="form-control" placeholder="<?php echo $etudiant["prenom"]; ?>" required autofocus>
+    <input type="prenom" name="prenom" id="prenom" class="form-control" placeholder="<?php echo $etudiant["prenom"]; ?>" >
     <br>
     <label>Date de Naissance</label>
-    <input type="datenaissance" name="datenaissance" id="datenaissance" class="form-control" placeholder="<?php echo $etudiant["date_naissance_format"]; ?>" required autofocus>
+    <input type="datenaissance" name="datenaissance" id="datenaissance" class="form-control" placeholder="<?php echo $etudiant["date_naissance_format"]; ?>" >
     <br>
     <label>Email</label>
-    <input type="email" name="email" id="email" class="form-control" placeholder="<?php echo $etudiant["mail"]; ?>" required autofocus>
+    <input type="email" name="email" id="email" class="form-control" placeholder="<?php echo $etudiant["mail"]; ?>" >
     <br>
     <label>Téléphone</label>
-    <input type="telephone" name="telephone" id="telephone" class="form-control" placeholder="<?php echo $etudiant["telephone"]; ?>" required autofocus>
+    <input type="telephone" name="telephone" id="telephone" class="form-control" placeholder="<?php echo $etudiant["telephone"]; ?>" >
     <br>
     <label>Niveau études</label>
     <select class="select2" name="niveau_etude">
@@ -45,7 +45,11 @@ getHeader("Profil");
     <input type="specialite" name="specialite" id="specialite" class="form-control" placeholder="" >
     <br>
     <label>CV</label>
-    <input type="cv" name="cv" id="cv" class="form-control" placeholder="<?php echo $etudiant["cv"]; ?>" >
+    <br
+        <?php echo $etudiant['cv']; ?><br>
+    Select image to upload:<br>
+    
+    <input type="file" name="fileToUpload" id="fileToUpload">
     <br>
     <label>Lettre de motivation</label>
     <input type="lettremotivation" name="lettremotivation" id="specialite" class="form-control" placeholder="<?php echo $etudiant["lm"]; ?>">

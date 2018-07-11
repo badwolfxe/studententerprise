@@ -73,7 +73,7 @@ function insertEtudiant(string $nom, string $prenom, string $date_naissance, str
     $stmt->execute();
 }
 
-function updateEtudiant(string $nom, string $prenom, string $date_naissance, string $email, string $telephone, int $id, string $niveau_etude) {
+function updateEtudiant(string $nom, string $prenom, string $date_naissance, string $email, string $telephone, int $id, string $niveau_etude, $name_file_cv) {
     /* @var $connection PDO */
     global $connection;
 
@@ -83,7 +83,8 @@ function updateEtudiant(string $nom, string $prenom, string $date_naissance, str
                 prenom = :prenom,
                 niveau_etude_id = :niveau,
                 date_naissance = :date_naissance,
-                numero_tel = :telephone
+                numero_tel = :telephone,
+                cv = :cv
                 WHERE id = :id;";
 
     $stmt = $connection->prepare($query);
@@ -92,6 +93,7 @@ function updateEtudiant(string $nom, string $prenom, string $date_naissance, str
     $stmt->bindParam(":date_naissance", $date_naissance);
     $stmt->bindParam(":telephone", $telephone);
     $stmt->bindParam(":niveau", $niveau_etude);
+    $stmt->bindParam(":cv", $name_file_cv);
     $stmt->bindParam(":id", $id);
     $stmt->execute();
     
