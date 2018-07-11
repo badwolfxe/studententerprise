@@ -8,6 +8,12 @@ body {
     font-family: 'Oxygen', sans-serif;
 }
 
+.container-page {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px 0px;
+}
+
 a {
     text-decoration: none;
 }
@@ -191,4 +197,8 @@ a.btn.mdp:hover {
     background: #fff;
     border: 1px solid crimson;
     transition: all, .5s;
+}
+
+a.btn.contact {
+    margin: initial;
 }

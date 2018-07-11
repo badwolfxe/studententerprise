@@ -5,6 +5,8 @@ require_once '../model/database.php';
 getHeader("Espace étudiant");
 ?>
 
+<section class="container-page">
+
 <h1>Trouvez l'élu</h1>
 
 <?php
@@ -32,5 +34,7 @@ $departement = getDepartementByEtudiant();
 <a class="btn deconnection" href="../admin/logout.php">Se déco</a>
 
 <a class="btn mdp" href="../mpd_form.php">Modifier son mot de passe</a>
+
+</section>
 
 <?php require_once '../layout/footer.php'; ?>

@@ -20,3 +20,5 @@ for (var i = 0; i < checkboxes.length; i++) {
     });
     
 }
+
+$('select.select2').select2();

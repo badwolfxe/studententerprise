@@ -73,7 +73,7 @@ function insertEtudiant(string $nom, string $prenom, string $date_naissance, str
     $stmt->execute();
 }
 
-function updateMember(int $id, string $firstname, string $lastname, string $picture) {
+function updateEtudiant(string $nom, string $prenom, string $date_naissance, string $email, string $telephone, int $id, string $niveau_etude) {
     /* @var $connection PDO */
     global $connection;
 
@@ -81,30 +81,37 @@ function updateMember(int $id, string $firstname, string $lastname, string $pict
                 SET 
                 nom = :nom,
                 prenom = :prenom,
+                niveau_etude_id = :niveau,
                 date_naissance = :date_naissance,
-                numero_tel = :numero_tel,
-                cv = :cv,
-                lettre_motivation = :lettre_motivation,
-                niveau_etude_id = :niveau_etude_id,
-                contrat_id = :contrat_id,
-                actif = :actif,
-                date_debut_contrat = :date_debut_contrat,
-                date_fin_contrat = :date_fin_contrat
-            WHERE id = :id;";
+                numero_tel = :telephone
+                WHERE id = :id;";
 
     $stmt = $connection->prepare($query);
     $stmt->bindParam(":nom", $nom);
     $stmt->bindParam(":prenom", $prenom);
-    $stmt->bindParam(":numero_tel", $numero_tel);
-    $stmt->bindParam(":cv", $cv);
-    $stmt->bindParam(":lettre_motivation", $lettre_motivation);
-    $stmt->bindParam(":niveau_etude_id", $niveau_etude_id);
-    $stmt->bindParam(":actif", $actif);
-    $stmt->bindParam(":contrat_id", $contrat_id);
-    $stmt->bindParam(":date_debut_contrat", $date_debut_contrat);
-    $stmt->bindParam(":date_fin_contrat", $date_fin_contrat);
+    $stmt->bindParam(":date_naissance", $date_naissance);
+    $stmt->bindParam(":telephone", $telephone);
+    $stmt->bindParam(":niveau", $niveau_etude);
+    $stmt->bindParam(":id", $id);
+    $stmt->execute();
+    
+    updateProfilUtilisateur($email, $id);
+  
+}
+
+ function updateProfilUtilisateur(string $email, int $id) {
+     global $connection;
+        $query = "UPDATE utilisateur
+                SET 
+                mail = :mail
+                WHERE id = :id;";
+
+    $stmt = $connection->prepare($query);
+    $stmt->bindParam(":mail", $email);
+    $stmt->bindParam(":id", $id);
     $stmt->execute();
 }
+
 
 function getEtudiant($id){
     global $connection;    
@@ -117,9 +124,10 @@ function getEtudiant($id){
                 etudiant.numero_tel AS telephone,
                 etudiant.cv AS cv,
                 etudiant.lettre_motivation AS lm,
-                niveau_etude.label,
+                niveau_etude.label AS labelniveau,
                 contrat.label AS contrat,
                 etudiant.actif,
+                etudiant.niveau_etude_id,
                 utilisateur.avatar AS avatar,
                 utilisateur.mail AS mail
             FROM etudiant

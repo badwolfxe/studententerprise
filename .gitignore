@@ -1,5 +1,5 @@
 .idea/
-/nbproject/
+nbproject/
 *.bak
 config/parameters.php
 uploads/
