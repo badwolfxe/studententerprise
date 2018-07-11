@@ -114,6 +114,7 @@ function getEtudiant($id){
                 niveau_etude.label AS labelniveau,
                 contrat.label AS contrat,
                 etudiant.actif,
+                etudiant.niveau_etude_id,
                 utilisateur.avatar AS avatar,
                 utilisateur.mail AS mail
             FROM etudiant

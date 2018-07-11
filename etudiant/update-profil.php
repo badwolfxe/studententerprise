@@ -3,6 +3,13 @@ require_once '../lib/functions.php';
 require_once '../model/database.php';
 
 $user = currentUser();
+$etudiant = getEtudiant($user["id"]);
+
+if (!isset($etudiant["id"])) {
+    header("Location: ../index.php");
+}
+
+$niveau_etudes = getAllEntity("niveau_etude");
 
 getHeader("Profil");
 ?>
@@ -26,7 +33,13 @@ getHeader("Profil");
     <input type="telephone" name="telephone" id="telephone" class="form-control" placeholder="Téléphone" required autofocus>
     <br>
     <label>Niveau études</label>
-    <input type="niveauetude" name="niveauetude" id="niveauetude" class="form-control" placeholder="Niveau Étude" required autofocus>
+    <select class="select2" name="niveau_etude">
+        <?php foreach($niveau_etudes as $niveau_etude) : ?>
+        <option value="<?php echo $niveau_etude["id"]; ?>" <?php echo ($niveau_etude["id"] == $etudiant["niveau_etude_id"]) ? "selected" : ""; ?>>
+            <?php echo $niveau_etude["label"]; ?>
+        </option>
+        <?php endforeach; ?>
+    </select>
     <br>
     <label>Spécialités</label>
     <input type="specialite" name="specialite" id="specialite" class="form-control" placeholder="specialite" required autofocus>
@@ -37,7 +50,6 @@ getHeader("Profil");
     <label>Lettre de motivation</label>
     <input type="lettremotivation" name="lettremotivation" id="specialite" class="form-control" placeholder="lettremotivation" required autofocus>
     
-    <input type="hidden" name="id" value="<?php echo $user["id"] ?>">
     <button class="btn btn-lg btn-primary btn-block" type="submit">Valider</button>
 </form>
 

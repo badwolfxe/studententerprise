@@ -2,13 +2,16 @@
 require_once '../lib/functions.php';
 require_once '../model/database.php';
 
+$user = currentUser();
+$etudiant = getEtudiant($user["id"]);
+
 getHeader("Espace étudiant");
 ?>
 
 <h1>Etudiant</h1>
 <p>coucou</p>
 
-<img src="images/<?php echo $etudiant['avatar']?>">
+<img src="uploads/<?php echo $etudiant['avatar']?>">
 
 <h3><?php echo $etudiant['nom'] .' ' . $etudiant['prenom'];?></h3>
 <h3><?php echo $etudiant['date_naissance_format'];?></h3>
