@@ -5,7 +5,7 @@ $utilisateur = currentUser();
 ?>
 <nav class="main-nav">
     <ul>
-        <li><a href="#">Étudiants</a></li>
+        <li><a>Étudiants</a></li>
         <li class="social-media">
             <a href="#"><img src="<?php echo SITE_URL ; ?>/images/facebook.svg"></a>
             <a href="#"><img src="<?php echo SITE_URL ; ?>/images/instagram.svg"></a>

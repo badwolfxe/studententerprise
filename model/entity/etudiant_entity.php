@@ -4,7 +4,8 @@ function getAllEtudiant() {
     /* @var $connection PDO */
     global $connection;
 
-    $query = "SELECT 
+    $query = "SELECT
+    etudiant.id,
 etudiant.nom AS nom,
 etudiant.prenom AS prenom,
 etudiant.numero_tel AS telephone,
@@ -12,7 +13,8 @@ DATE_FORMAT(etudiant.date_naissance, '%e %M %Y') AS date_naissance_format,
 niveau_etude.id AS niveau,
 niveau_etude.label AS labelniveau,
 contrat.label AS contrat,
-utilisateur.mail AS mail
+utilisateur.mail AS mail,
+utilisateur.valide AS publication
 FROM etudiant
 INNER JOIN utilisateur ON utilisateur.id = etudiant.id
 INNER JOIN niveau_etude ON niveau_etude.id = etudiant.niveau_etude_id

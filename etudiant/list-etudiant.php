@@ -5,8 +5,7 @@ require_once '../model/database.php';
 getHeader("Espace étudiant");
 ?>
 
-<h1>Etudiant</h1>
-<p>coucou</p>
+<h1>Trouvez l'élu</h1>
 
 <?php
 $etudiants = getAllEtudiant();
