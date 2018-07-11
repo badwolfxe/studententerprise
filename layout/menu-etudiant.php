@@ -1,11 +1,15 @@
+<?php 
+require_once '../lib/functions.php';
+require_once '../model/database.php';
+getHeader("Espace étudiant");
+?>
 
-<nav class="main-nav">
+<nav class="deuxieme-menu">
     <ul>
-        <li class="social-media">
-            <a href="../etudiant/profil.php">Mon profil</a>
-            <a href="../mpd_form.php">Changer mon mot de passe</a>
-            <a href="../etudiant/index.php">Recrutement</a>
-        </li>
+        <li><a href="../etudiant/profil.php">Mon profil</a></li>
+        <li><a href="../mpd_form.php">Changer mon mot de passe</a></li>
+        <li><a href="../etudiant/index.php">Recrutement</a></li>
+        
     </ul>
 </nav>
 

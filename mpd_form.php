@@ -1,11 +1,13 @@
+<?php 
 
+?>
 
 <h1>Réinitialiser votre mot de passe</h1>
 
 <form action="mdp_query.php" method="POST">
    
     <div>
-        <label>EMail</label>
+        <label>eMail</label>
         <input type="email" name="libelle_email">
     </div>
     

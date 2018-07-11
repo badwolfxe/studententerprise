@@ -3,6 +3,7 @@ require_once '../lib/functions.php';
 require_once '../model/database.php';
 
 getHeader("Espace étudiant");
+
 ?>
 
 <?php
@@ -14,8 +15,9 @@ $specialites = getAllSpecialiteByEtudiant($id);
 ?>
 
 <section class="container-page">
+<?php require_once '../layout/menu-etudiant.php';?>
 <img src="<?php echo SITE_URL ; ?>images/<?php echo $etudiant['avatar']?>">
-
+<div class="zone-etudiants">
 <h3><?php echo $etudiant['nom'] .' ' . $etudiant['prenom'];?></h3>
 <h3><?php echo $etudiant['date_naissance_format'];?></h3>
 
@@ -37,4 +39,5 @@ $specialites = getAllSpecialiteByEtudiant($id);
 
 
 <a class="btn deconnection" href="update-profil.php">Modifier mon profil</a>
+</div>
 </section>

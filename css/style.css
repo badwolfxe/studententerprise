@@ -202,3 +202,18 @@ a.btn.mdp:hover {
 a.btn.contact {
     margin: initial;
 }
+
+.zone-etudiants {
+    float:left;
+}
+
+/* deuxieme menu */
+.deuxieme-menu {
+    float:left;
+    padding-right:15px;
+    width:30%;
+}
+
+.deuxieme-menu ul li {
+    list-style-type: none; 
+}
