@@ -14,6 +14,8 @@ $entreprise = getEntreprise($id);
 
 ?>
 
+<h3>Mes infos</h3>
+
 <img src="images/<?php echo $entreprise['avatar']?>">
 
 <h3><?php echo $entreprise['nom'] ;?></h3>
