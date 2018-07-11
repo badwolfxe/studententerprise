@@ -13,13 +13,15 @@ if (isset($user['id'])) {
     // Enregistre son identifiant dans la session
     $_SESSION['id'] = $user['id'];
     
-    if (!is_null($user['admin'])) {
-        header('Location: admin/index.php');
-    } else if (!is_null($user['etudiant'])) {
-        header('Location: etudiant/index.php');
-    } else if (!is_null($user['entreprise'])) {
-        header('Location: entreprise/index.php');
+    if (isset ($user['valide']) == 1 ){
+    
+        if (!is_null($user['admin'])) {
+            header('Location: admin/index.php');
+        } else if (!is_null($user['etudiant'])) {
+            header('Location: etudiant/index.php');
+        } else if (!is_null($user['entreprise'])) {
+            header('Location: entreprise/index.php');
+        }
+    } } else {
+        header('Location: index.php');
     }
-} else {
-    header('Location: index.php');
-}

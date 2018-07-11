@@ -15,7 +15,11 @@ $departement = getDepartementByEtudiant();
 
 ?>
 
+
 <?php foreach ($etudiants as $etudiant) : ?>
+
+<?php if (isset ($etudiant['publication']) == 1 ){ ?>
+
 <img src="images/<?php echo $etudiant['avatar']?>">
 
 <h3><?php echo $etudiant['nom'] .' ' . $etudiant['prenom'];?></h3>
@@ -24,11 +28,7 @@ $departement = getDepartementByEtudiant();
 <p><?php echo $etudiant['telephone']; ?></p>
 <p><?php echo $etudiant['contrat']; ?></p>
 
-<?php endforeach ;?>
-
-<h3>DEPARTEMENT</h3>
-<p><?php echo $departement['label']; ?></p>
-
+<?php }endforeach ;?>
 
 
 <a class="btn deconnection" href="../admin/logout.php">Se déco</a>
