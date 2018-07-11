@@ -8,23 +8,13 @@ getHeader("Espace étudiant");
 <h1>Etudiant</h1>
 <p>coucou</p>
 
-<?php
-$id = $_SESSION['id'];
-$etudiant = getEtudiant($id);
-$departements = getAllDepartementByEtudiant($id);
-$specialites = getAllSpecialiteByEtudiant($id);
-
-?>
-
 <img src="images/<?php echo $etudiant['avatar']?>">
 
 <h3><?php echo $etudiant['nom'] .' ' . $etudiant['prenom'];?></h3>
 <h3><?php echo $etudiant['date_naissance_format'];?></h3>
 <p><?php echo $etudiant['mail']; ?></p>
 <p><?php echo $etudiant['telephone']; ?></p>
-<p><?php echo $etudiant['contrat']; ?></p>
-<p><?php echo $etudiant['cv']; ?></p>
-<p><?php echo $etudiant['lm']; ?></p>
+<?php echo $etudiant['contrat']; ?>
 
 <?php foreach ($departements as $departement) : ?>
 <p><?php echo $departement['label']; ?></p>
@@ -34,6 +24,13 @@ $specialites = getAllSpecialiteByEtudiant($id);
 <p><?php echo $specialite['label']; ?></p>
 <?php endforeach ;?>
 
+<a href="<?php echo SITE_URL ; ?>/uploads/<?php echo $etudiant['cv']; ?>"><?php echo $etudiant['cv']; ?></a>
+
+<a href="<?php echo SITE_URL ; ?>/uploads/<?php echo $etudiant['lm']; ?>"><?php echo $etudiant['lm']; ?></a>
+
+
+
+<a class="btn deconnection" href="profil.php">Mon profil</a>
 
 <a class="btn deconnection" href="../admin/logout.php">Se déco</a>
 

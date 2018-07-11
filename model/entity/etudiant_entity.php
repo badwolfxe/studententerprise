@@ -71,7 +71,7 @@ function insertEtudiant(string $nom, string $prenom, string $date_naissance, str
     $stmt->execute();
 }
 
-function updateMember(int $id, string $firstname, string $lastname, string $picture) {
+function updateEtudiant(string $nom, string $prenom, string $date_naissance, string $email, string $telephone, string $niveau_etude, string $specialite, int $id) {
     /* @var $connection PDO */
     global $connection;
 
@@ -80,28 +80,22 @@ function updateMember(int $id, string $firstname, string $lastname, string $pict
                 nom = :nom,
                 prenom = :prenom,
                 date_naissance = :date_naissance,
-                numero_tel = :numero_tel,
-                cv = :cv,
-                lettre_motivation = :lettre_motivation,
-                niveau_etude_id = :niveau_etude_id,
-                contrat_id = :contrat_id,
-                actif = :actif,
-                date_debut_contrat = :date_debut_contrat,
-                date_fin_contrat = :date_fin_contrat
-            WHERE id = :id;";
+                numero_tel = :telephone,
+                niveau_etude_id = :niveauetude,
+                WHERE id = :id;";
 
     $stmt = $connection->prepare($query);
     $stmt->bindParam(":nom", $nom);
     $stmt->bindParam(":prenom", $prenom);
-    $stmt->bindParam(":numero_tel", $numero_tel);
-    $stmt->bindParam(":cv", $cv);
-    $stmt->bindParam(":lettre_motivation", $lettre_motivation);
-    $stmt->bindParam(":niveau_etude_id", $niveau_etude_id);
-    $stmt->bindParam(":actif", $actif);
-    $stmt->bindParam(":contrat_id", $contrat_id);
-    $stmt->bindParam(":date_debut_contrat", $date_debut_contrat);
-    $stmt->bindParam(":date_fin_contrat", $date_fin_contrat);
+    $stmt->bindParam(":date_naissance", $date_naissance);
+    $stmt->bindParam(":email", $email);
+    $stmt->bindParam(":telephone", $telephone);
+    $stmt->bindParam(":niveauetude", $niveau_etude);
+    $stmt->bindParam(":specialite", $specialite);
+    $stmt->bindParam(":id", $id);
     $stmt->execute();
+    
+    updateUtilisateur($email, $id);
 }
 
 function getEtudiant($id){
@@ -115,7 +109,7 @@ function getEtudiant($id){
                 etudiant.numero_tel AS telephone,
                 etudiant.cv AS cv,
                 etudiant.lettre_motivation AS lm,
-                niveau_etude.label,
+                niveau_etude.label AS labelniveau,
                 contrat.label AS contrat,
                 etudiant.actif,
                 utilisateur.avatar AS avatar,
