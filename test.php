@@ -20,6 +20,7 @@ getHeader("Espace étudiant");
             <form method="POST" action="upload-cv.php" enctype="multipart/form-data">
      CV : <input type="file" name="cv">
      <input type="submit" name="envoyer" value="Envoyer le fichier">
+     
 </form>
 
         </div>

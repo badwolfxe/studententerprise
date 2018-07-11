@@ -1,4 +1,5 @@
 <?php
+header("Location: test.php");
 $dossier = 'upload/';
 $fichier = basename($_FILES['cv']['name']);
 $extensions = array('.png', '.gif', '.jpg', '.jpeg', '.pdf');
@@ -28,7 +29,6 @@ else
 {
      echo $erreur;
 }
-header('Location: test.php');
 
 
 ?>
