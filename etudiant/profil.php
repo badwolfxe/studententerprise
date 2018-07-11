@@ -42,4 +42,5 @@ $specialites = getAllSpecialiteByEtudiant($id);
 
 <a class="btn deconnection" href="update-profil.php">Modifier mon profil</a>
 </div>
+
 </section>
