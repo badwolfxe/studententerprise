@@ -19,7 +19,7 @@ $specialites = getAllSpecialiteByEtudiant($id);
 <div class="zone-etudiants">
     
 <img class="image-avatar" src="<?php echo SITE_URL ; ?>uploads/<?php echo $etudiant['avatar']?>">
-<a class="btn" href="update-avatar.php">Modifier ou ajouter mon profil</a>
+<a class="btn btnbis" href="update-avatar.php">Modifier ou ajouter mon profil</a>
 <h3><?php echo $etudiant['nom'] .' ' . $etudiant['prenom'];?></h3>
 <h3><?php echo $etudiant['date_naissance_format'];?></h3>
 
@@ -40,7 +40,7 @@ $specialites = getAllSpecialiteByEtudiant($id);
 <a href="<?php echo SITE_URL ; ?>uploads/<?php echo $etudiant['lm']; ?>"><?php echo $etudiant['lm']; ?></a>
 
 
-<a class="btn deconnection" href="update-profil.php">Modifier mon profil</a>
+<a class="btn btnbis deconnection" href="update-profil.php">Modifier mon profil</a>
 </div>
 
 </section>

@@ -199,14 +199,9 @@ a.btn.mdp:hover {
     transition: all, .5s;
 }
 
-a.btn.contact {
+a.btnbis{
     margin: initial;
 }
-
-.zone-etudiants {
-    float:left;
-    padding-left:30px;
-    border-left:2px solid #000;
 
 img.image-avatar {
     width: 50%;

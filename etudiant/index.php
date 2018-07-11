@@ -28,7 +28,7 @@ $entreprises = getAllEntreprise();
 <?php if (isset ($etudiant['publication']) == 1 ){ ?>
 <p><?php echo $entreprise['nom'] ?></p>
 
-<a class="btn contact" href="mailto:<?php echo $entreprise['mail'] ?>">Contacter l'entreprise</a>
+<a class="btn btnbis" href="mailto:<?php echo $entreprise['mail'] ?>">Contacter l'entreprise</a>
 
 <?php }endforeach; ?>
 
