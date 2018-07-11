@@ -11,7 +11,7 @@ getHeader("Espace Admin");
 
 <?php
 
-$entreprise = getAllEntreprise();
+$entreprises = getAllEntreprise();
 $etudiants = getAllEtudiant();
 
 ?>
@@ -27,11 +27,11 @@ $etudiants = getAllEtudiant();
     <th>Nom</th> 
     <th>Mail</th>
     <th>Contrat</th>
-    <th>Publier</th>
+    <th>Valider</th>
   </tr>
   <?php foreach ($etudiants as $key => $etudiant) : ?>
   <tr>
-    <td><img src="images/<?php echo $etudiant['avatar'];?>"></td>
+    <td><img src="../uploads/<?php echo $utilisateur['avatar'];?>"></td>
   </tr>
   <tr>
     <td><?php echo $etudiant['nom'] .' ' . $etudiant['prenom'];?></td>
@@ -44,8 +44,37 @@ $etudiants = getAllEtudiant();
   </tr>
   <tr>
       <td>
-           <input type="checkbox" id="actif-<?php echo $key; ?>" data-id="<?php echo $etudiant['id']; ?>" name="actif" <?php echo ($etudiant['publication'] == 1) ? 'checked' : '';?> />
+           <input type="checkbox" id="actif-<?php echo $key; ?>" data-id="<?php echo $etudiant['id']; ?>" name="actif" <?php echo ($etudiant['validation'] == 1) ? 'checked' : '';?> />
             <label for="actif-<?php echo $key; ?>">Actif <i class="fa fa-spinner fa-pulse fa-fw hidden"></i></label>
+        </td>
+  </tr>
+  <?php endforeach ;?>
+</table>
+</div>
+  
+<div>  
+   
+<table id="liste-entreprise" style="width:100%">
+  <tr>
+    <th>Logo</th>
+    <th>Nom</th> 
+    <th>Mail</th>
+    <th>Valider</th>
+  </tr>
+  <?php foreach ($entreprises as $key => $entreprise) : ?>
+  <tr>
+    <td><img src=".../uploads/<?php echo $entreprise['avatar'];?>"></td>
+  </tr>
+  <tr>
+    <td><?php echo $entreprise['nom'];?></td>
+  </tr>
+  <tr>
+    <td><?php echo $entreprise['mail']; ?></td>
+  </tr>
+  <tr>
+      <td>
+           <input type="checkbox" id="actif-<?php echo $entreprise['id']; ?>" data-id="<?php echo $entreprise['id']; ?>" name="actif" <?php echo ($entreprise['validation'] == 1) ? 'checked' : '';?> />
+            <label for="actif-<?php echo $entreprise['id']; ?>">Actif <i class="fa fa-spinner fa-pulse fa-fw hidden"></i></label>
         </td>
   </tr>
   <?php endforeach ;?>

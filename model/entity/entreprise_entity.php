@@ -9,7 +9,8 @@ function getAllEntreprise() {
             entreprise.id,
             entreprise.nom,
             utilisateur.mail AS mail,
-            utilisateur.avatar
+            utilisateur.avatar,
+            utilisateur.valide AS validation
         FROM entreprise
         INNER JOIN utilisateur ON utilisateur.id = entreprise.id";
 

@@ -25,7 +25,7 @@ $entreprises = getAllEntreprise();
 <h3>Listes des entreprises</h3>
 <?php foreach ($entreprises as $entreprise) :?>
 
-<?php if (isset ($etudiant['publication']) == 1 ){ ?>
+<?php if (isset ($entreprise['validation']) == 1 ){ ?>
 <p><?php echo $entreprise['nom'] ?></p>
 
 <a class="btn btnbis" href="mailto:<?php echo $entreprise['mail'] ?>">Contacter l'entreprise</a>
