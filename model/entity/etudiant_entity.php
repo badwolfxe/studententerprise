@@ -73,7 +73,7 @@ function insertEtudiant(string $nom, string $prenom, string $date_naissance, str
     $stmt->execute();
 }
 
-function updateEtudiant(string $nom, string $prenom, string $date_naissance, string $email, string $telephone, string $niveau_etude, string $specialite, int $id) {
+function updateEtudiant(string $nom, string $prenom, string $date_naissance, string $email, string $telephone, int $id, string $niveau_etude) {
     /* @var $connection PDO */
     global $connection;
 
@@ -81,24 +81,37 @@ function updateEtudiant(string $nom, string $prenom, string $date_naissance, str
                 SET 
                 nom = :nom,
                 prenom = :prenom,
+                niveau_etude_id = :niveau,
                 date_naissance = :date_naissance,
-                numero_tel = :telephone,
-                niveau_etude_id = :niveauetude,
+                numero_tel = :telephone
                 WHERE id = :id;";
 
     $stmt = $connection->prepare($query);
     $stmt->bindParam(":nom", $nom);
     $stmt->bindParam(":prenom", $prenom);
     $stmt->bindParam(":date_naissance", $date_naissance);
-    $stmt->bindParam(":email", $email);
     $stmt->bindParam(":telephone", $telephone);
-    $stmt->bindParam(":niveauetude", $niveau_etude);
-    $stmt->bindParam(":specialite", $specialite);
+    $stmt->bindParam(":niveau", $niveau_etude);
     $stmt->bindParam(":id", $id);
     $stmt->execute();
     
-    updateUtilisateur($email, $id);
+    updateProfilUtilisateur($email, $id);
+  
 }
+
+ function updateProfilUtilisateur(string $email, int $id) {
+     global $connection;
+        $query = "UPDATE utilisateur
+                SET 
+                mail = :mail
+                WHERE id = :id;";
+
+    $stmt = $connection->prepare($query);
+    $stmt->bindParam(":mail", $email);
+    $stmt->bindParam(":id", $id);
+    $stmt->execute();
+}
+
 
 function getEtudiant($id){
     global $connection;    
