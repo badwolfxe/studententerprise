@@ -13,17 +13,6 @@ getHeader("Accueil");
  
 </header>
 
-<div class="aside">
-   <ul>
-       <li>
-          <h2><a href="#">Mon Profil</a></h2>
-           <h2><a href="#">Modifier mon mot de passe</a></h2>
-          <h2><a href="#">Recrutement</a></h2>
-       </li>
-   </ul>
-    <h2>Mon Profil</h2>
-    
-</div>
 
 <div class="liste-entreprises">
    <img src="images/<?php echo $entreprise['avatar'] ?>" alt="photo_profil" style="height:200px;">
