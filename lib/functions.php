@@ -27,6 +27,11 @@ function currentUser() {
     return null;
 }
 
+function currentUserHasRole(string $role) {
+    $user = currentUser();
+    return is_numeric($user[$role]);
+}
+
 /**
  * Récupérer le chemin actuel (sans le nom du fichier)
  * @return string Path

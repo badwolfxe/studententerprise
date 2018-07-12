@@ -2,6 +2,10 @@
 require_once '../lib/functions.php';
 require_once '../model/database.php';
 
+if (!currentUserHasRole("admin")) {
+    header("Location: ../index.php");
+}
+
 $utilisateur_id = $_POST["utilisateur_id"];
 $actif = ($_POST["actif"] == "true") ? 1 : 0;
 
