@@ -37,7 +37,17 @@ a.importation {
     
 }
 
-.formulaire div{
+.menu-formulaire{
     display:flex;
+}
+
+.formulaire{
     flex:70%;
+    border-left: 1px solid #000;
+    padding-left : 30px;
+    
+}
+
+input.btn {
+    background:#975;
 }
