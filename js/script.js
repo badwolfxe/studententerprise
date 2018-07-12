@@ -1,3 +1,4 @@
+jQuery(document).ready(function ($) {
 var checkboxes = document.getElementById('liste-utilisateurs').querySelectorAll('input[type=checkbox]');
 
 for (var i = 0; i < checkboxes.length; i++) {
@@ -48,4 +49,10 @@ for (var i = 0; i < checkboxes.length; i++) {
 }
 
 $('select.select2').select2();
+    
+}); 
 
+
+ $('.menuToggle').click(function(){
+    $('body').toggleClass('open-menu'); 
+    });

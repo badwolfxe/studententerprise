@@ -20,31 +20,30 @@ $liste_etudiant = getAllEtudiant();
 getHeader("Accueil");
 ?>
 
-<header class="home-banner">
- 
-</header>
+<section class="home-banner">
 
 
 <div class="formulaire-connexion">
         <form action="login.php" method="POST">
+             <h2 class="h3 mb-3 font-weight-normal">Connexion</h2>
             <div>
                 <label>Email :</label>
-                <input type="email" name="email">
+                <input type="email" name="email" placeholder="hello@gmail.com">
             </div>
             <div>
                 <label>Mot de passe :</label>
-                <input type="password" name="password">
+                <input type="password" name="password" placeholder="Mot de passe">
             </div>
             <input type="submit">
         </form>
-    
     <br>
     
     <?php include 'nouveau-utilisateur.php'; ?>
-    
-    
+    <p>En validant votre inscription vous acceptez <a href="">nos conditions d'utilisation.</a></p>
 </div>
-
+    
+    </section>
+    
 
 <?php getFooter(); ?>
 
