@@ -12,6 +12,7 @@ $etudiant = getEtudiant($id);
 $departements = getAllDepartementByEtudiant($id);
 $specialites = getAllSpecialiteByEtudiant($id);
 
+
 ?>
 
 <section class="container-page profil">
@@ -35,7 +36,7 @@ $specialites = getAllSpecialiteByEtudiant($id);
     <div class="informations">
 <h3>Mes spécialités</h3>
 <?php foreach ($specialites as $specialite) : ?>
-<p><?php echo $specialite['label']; ?></p>
+<p id="specialite"><?php echo $specialite['label']; ?></p>
 <?php endforeach ;?>
 </div>
 <div class="informations">
@@ -56,6 +57,11 @@ echo $interval->format('%m month');
 <h3>Ma lettre de motivation</h3>
 <a href="<?php echo SITE_URL ; ?>uploads/<?php echo $etudiant['lm']; ?>"><?php echo $etudiant['lm']; ?></a>
 </div>
+
+<h3>Mon CV :</h3>
+<a class="importation" href="<?php echo SITE_URL ; ?>uploads/<?php echo $etudiant['cv']; ?>"><?php echo $etudiant['cv']; ?></a>
+<h3>Ma lettre de motivation :</h3>
+<a class="importation" href="<?php echo SITE_URL ; ?>uploads/<?php echo $etudiant['lm']; ?>"><?php echo $etudiant['lm']; ?></a>
 
 
 <a class="btn btnbis deconnection" href="update-profil.php">Modifier mon profil</a>
