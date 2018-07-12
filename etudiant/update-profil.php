@@ -13,7 +13,9 @@ $niveau_etudes = getAllEntity("niveau_etude");
 
 getHeader("Profil");
 ?>
+
 <section class="container-page">
+    <?php require_once '../layout/menu-etudiant.php';?>
 <form action="update.php" method="post" class="form-signin inscription" enctype="multipart/form-data">
     <h1 class="h3 mb-3 font-weight-normal">Modifier son profil</h1>
     

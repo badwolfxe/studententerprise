@@ -1,7 +1,12 @@
-<?php 
+<?php
+require_once 'lib/functions.php';
+require_once 'model/database.php';
 
+getHeader("Modification profil");
 ?>
 
+<section class="container-page">
+    <?php require_once 'layout/menu-etudiant.php';?>
 <h1>Réinitialiser votre mot de passe</h1>
 
 <form action="mdp_query.php" method="POST">
@@ -21,5 +26,7 @@
     <input type="submit">
 
 </form>
+
+</section>
 
 
