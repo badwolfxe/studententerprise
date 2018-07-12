@@ -1,6 +1,13 @@
 <?php
+require_once '../lib/functions.php';
 require_once '../model/database.php';
 require_once '../model/entity/etudiant_entity.php';
+?>
+
+<link rel="stylesheet" href="<?php echo SITE_URL; ?>css/style.css">
+<link rel="stylesheet" href="<?php echo SITE_URL; ?>css/style_liste.css">
+
+<?php
 
 if (!empty($_POST["creation"]))
 {
@@ -47,15 +54,26 @@ if (!empty($_POST["creation"]))
     <h1>Go Fuck Yourself</h1>
     <?php
   }
-
+    
+?>
+  <div class="AllSudents">
+  <section class="students">
+<?php
   foreach ($etudiants as $etudiant) : ?>
-  <img src="images/<?php echo $etudiant['avatar']?>">
-
+<div class="details">
+  <img src="../uploads/<?php echo $etudiant['avatar']?>">
+<div class="details_text">
   <h3><?php echo $etudiant['nom'] .' ' . $etudiant['prenom'];?></h3>
   <h3><?php echo $etudiant['date_naissance_format'];?></h3>
-  <p><?php echo $etudiant['mail']; ?></p>
-  <p><?php echo $etudiant['telephone']; ?></p>
-  <p><?php echo $etudiant['contrat']; ?></p>
-  <?php endforeach ;
-}
-?>
+   <p>Je recherche un(e) <?php echo $etudiant['contrat']; ?></p>
+    </div>
+<div class="details_contact">
+  <a href="mailto:<?php echo $etudiant['mail']; ?>"><i class="fa fa-2x fa-envelope" aria-hidden="true"></i></a>
+    <a href="mailto:<?php echo $etudiant['telephone']; ?>"><i class="fa fa-2x fa-phone-square" aria-hidden="true"></i></a>
+  
+  </div>
+  </div>
+  <?php endforeach ; }?>
+
+</section>
+</div>

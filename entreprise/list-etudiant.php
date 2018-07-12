@@ -57,17 +57,6 @@ getHeader("Espace étudiant");
 
 <section class="container-page">
 
-
-<?php foreach ($etudiants as $etudiant) : ?>
-<img src="../uploads/<?php echo $etudiant['avatar']?>">
-
-<h3><?php echo $etudiant['nom'] .' ' . $etudiant['prenom'];?></h3>
-<h3><?php echo $etudiant['date_naissance_format'];?></h3>
-<p><?php echo $etudiant['mail']; ?></p>
-<p><?php echo $etudiant['telephone']; ?></p>
-<p><?php echo $etudiant['contrat']; ?></p>
-<?php endforeach ;?> 
-
 </section>
 
 <?php require_once '../layout/footer.php'; ?>
