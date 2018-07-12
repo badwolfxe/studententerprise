@@ -31,7 +31,7 @@ $departements = getAllDepartementByEtudiant($id);
 <h3><?php echo $entreprise['nom'] ;?></h3>
 <p><?php echo $entreprise['mail']; ?></p>
 
-<a class="btn mdp" href="../etudiant/list-etudiant.php">Trouver l'élu</a>
+<a class="btn mdp" href="../entreprise/list-etudiant.php">Trouver l'élu</a>
 
 
 <a class="btn deconnection" href="../admin/logout.php">Se déco</a>
