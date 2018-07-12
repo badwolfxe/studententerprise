@@ -40,13 +40,8 @@ getHeader("Espace étudiant");
         </div>
         <div class="informations">
             <h3>Date de contrat</h3>
-            <p>De <?php echo $etudiant['date_debut_contrat'] ?> aux <?php echo $etudiant['date_fin_contrat'] ?>
-            <p>Pendant <?php
-                $datetime1 = $etudiant['date_debut'];
-                $datetime2 = $etudiant['date_fin'];
-                $interval = date_diff(new DateTime($datetime2), new DateTime($datetime1));
-                echo $interval->format('%m mois');
-                ?> </p>
+            <p>De <?php echo $etudiant['date_debut_contrat_format'] ?> aux <?php echo $etudiant['date_fin_contrat_format'] ?>
+            <p>Pendant <?php echo $etudiant["duree_contrat"]; ?> mois</p>
         </div>
         <div class="informations">
             <h3>Mon CV :</h3>

@@ -76,7 +76,7 @@ function insertEtudiant(string $nom, string $prenom, string $date_naissance, str
     $stmt->execute();
 }
 
-function updateEtudiant(string $nom, string $prenom, string $date_naissance, string $email, string $telephone, int $id, string $niveau_etude, string $name_file_cv, string $debut_contrat, string $fin_contrat) {
+function updateEtudiant(string $nom, string $prenom, string $date_naissance, string $email, string $telephone, int $id, string $niveau_etude, string $name_file_cv, string $name_file_lm, string $debut_contrat, string $fin_contrat) {
     /* @var $connection PDO */
     global $connection;
 
@@ -89,6 +89,7 @@ function updateEtudiant(string $nom, string $prenom, string $date_naissance, str
                 date_debut_contrat= :debut_contrat,
                 date_fin_contrat = :fin_contrat,
                 cv = :cv,
+                lettre_motivation = :lm,
                 numero_tel = :telephone
                 WHERE id = :id;";
 
@@ -101,6 +102,7 @@ function updateEtudiant(string $nom, string $prenom, string $date_naissance, str
     $stmt->bindParam(":fin_contrat", $fin_contrat);
     $stmt->bindParam(":debut_contrat", $debut_contrat);
     $stmt->bindParam(":cv", $name_file_cv);
+    $stmt->bindParam(":lm", $name_file_lm);
     $stmt->bindParam(":id", $id);
     $stmt->execute();
 
@@ -129,11 +131,13 @@ function getEtudiant($id){
                 etudiant.id,
                 etudiant.nom AS nom,
                 etudiant.prenom,
+                etudiant.date_naissance,
+                etudiant.date_debut_contrat,
+                etudiant.date_fin_contrat,
                 DATE_FORMAT(etudiant.date_naissance, '%e %M %Y') AS date_naissance_format,
-                DATE_FORMAT(etudiant.date_debut_contrat, '%e %M %Y') AS date_debut_contrat,
-                DATE_FORMAT(etudiant.date_fin_contrat, '%e %M %Y') AS date_fin_contrat,
-                etudiant.date_debut_contrat AS date_debut,
-                etudiant.date_fin_contrat AS date_fin,
+                DATE_FORMAT(etudiant.date_debut_contrat, '%e %M %Y') AS date_debut_contrat_format,
+                DATE_FORMAT(etudiant.date_fin_contrat, '%e %M %Y') AS date_fin_contrat_format,
+                TIMESTAMPDIFF(MONTH, etudiant.date_debut_contrat, etudiant.date_fin_contrat) AS duree_contrat,
                 etudiant.numero_tel AS telephone,
                 etudiant.cv AS cv,
                 etudiant.lettre_motivation AS lm,

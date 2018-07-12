@@ -14,13 +14,15 @@ getHeader("Espace étudiant");
     <h1>Etudiant</h1>
 
     <h3>Listes des entreprises</h3>
+    
+    <div class="liste-entreprises">
     <?php foreach ($entreprises as $entreprise) : ?>
         <?php if (isset($entreprise['validation']) == 1) : ?>
             <p><?php echo $entreprise['nom'] ?></p>
             <a class="btn btnbis" href="mailto:<?php echo $entreprise['mail'] ?>">Contacter l'entreprise</a>
         <?php endif; ?>
     <?php endforeach; ?>
-
+    </div>
 
 
     <a class="btn deconnection" href="profil.php">Mon profil</a>
