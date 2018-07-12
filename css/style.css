@@ -90,11 +90,33 @@ nav.main-nav > ul a {
     color: #FFF;
 }
 
+nav.main-nav > ul a:hover {
+    
+}
+
+li.social-media a img {
+    transform: scale(1);
+    transition: all, .5s;
+}
+
+li.social-media a:hover img {
+    transform: scale(.7);
+    opacity: .8;
+    transition: all, .5s;
+}
+
 nav.main-nav > ul > li:first-child,
 nav.main-nav > ul > li:last-child {
     background: #2c2c2c;
     flex: 10%;
     display: flex;
+    transition: all, .5s;
+}
+
+nav.main-nav > ul > li:first-child:hover,
+nav.main-nav > ul > li:last-child:hover {
+    transition: all, .5s;
+    background: #848383;
 }
 
 nav.main-nav > ul > li:first-child a,
@@ -172,6 +194,7 @@ nav.main-nav > ul > li:last-child {
     -webkit-box-shadow: 3px 4px 15px 0px rgba(0,0,0,0,2);
     -moz-box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.2);
     box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.2);
+    color: #000;
 }
 
 .formulaire-connexion form input[type="submit"],
@@ -292,12 +315,30 @@ a.btnbis{
     margin: initial;
 }
 
-img.image-avatar {
-    width: 50%;
+.container-avatar {
+    max-width: 300px;
+    max-height: 300px;
+    overflow: hidden;
+    margin-bottom: 20px;
 }
 
 div.zone-etudiants {
     flex:70%
+}
+
+.zone-etudiants h3 {
+    color: #00cc9c;
+    font-weight: bold;
+
+}
+
+.informations:after {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 1px;
+    background: #00cc9c;
+    margin: 20px;
 }
 
 

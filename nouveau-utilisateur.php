@@ -3,7 +3,7 @@
     
     <label>Tu es : </label>
     <select type="type" name="type">
-        <option type="type" value="etudiant">Étudiant</option>
+        <option type="type" value="etudiant" >Étudiant</option>
         <option type="type" value="entreprise">Entreprise</option>  
     </select>
 
