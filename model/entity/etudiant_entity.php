@@ -74,7 +74,7 @@ function insertEtudiant(string $nom, string $prenom, string $date_naissance, str
     $stmt->execute();
 }
 
-function updateEtudiant(string $nom, string $prenom, string $date_naissance, string $email, string $telephone, int $id, string $niveau_etude) {
+function updateEtudiant(string $nom, string $prenom, string $date_naissance, string $email, string $telephone, int $id, string $niveau_etude, string $name_file_cv, string $debut_contrat, string $fin_contrat) {
     /* @var $connection PDO */
     global $connection;
 
@@ -84,6 +84,8 @@ function updateEtudiant(string $nom, string $prenom, string $date_naissance, str
                 prenom = :prenom,
                 niveau_etude_id = :niveau,
                 date_naissance = :date_naissance,
+                date_debut_contrat= :debut_contrat,
+                date_fin_contrat = :fin_contrat,
                 numero_tel = :telephone
                 WHERE id = :id;";
 
@@ -93,6 +95,8 @@ function updateEtudiant(string $nom, string $prenom, string $date_naissance, str
     $stmt->bindParam(":date_naissance", $date_naissance);
     $stmt->bindParam(":telephone", $telephone);
     $stmt->bindParam(":niveau", $niveau_etude);
+    $stmt->bindParam(":fin_contrat", $fin_contrat);
+    $stmt->bindParam(":debut_contrat", $debut_contrat);
     $stmt->bindParam(":id", $id);
     $stmt->execute();
 
@@ -122,6 +126,10 @@ function getEtudiant($id){
                 etudiant.nom AS nom,
                 etudiant.prenom,
                 DATE_FORMAT(etudiant.date_naissance, '%e %M %Y') AS date_naissance_format,
+                DATE_FORMAT(etudiant.date_debut_contrat, '%e %M %Y') AS date_debut_contrat,
+                DATE_FORMAT(etudiant.date_fin_contrat, '%e %M %Y') AS date_fin_contrat,
+                etudiant.date_debut_contrat AS date_debut,
+                etudiant.date_fin_contrat AS date_fin,
                 etudiant.numero_tel AS telephone,
                 etudiant.cv AS cv,
                 etudiant.lettre_motivation AS lm,

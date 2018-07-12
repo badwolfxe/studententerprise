@@ -14,6 +14,10 @@ body {
     padding: 20px 0px;
 }
 
+img {
+    width: 100%;
+}
+
 a {
     text-decoration: none;
 }
@@ -31,6 +35,13 @@ a {
 .main-header {
     display: flex;
     align-items: center;
+}
+
+/* Menu */
+
+.navigation.mobile {
+    display: none;
+    position: absolute;
 }
 
 .main-header > nav.main-nav {
@@ -79,11 +90,33 @@ nav.main-nav > ul a {
     color: #FFF;
 }
 
+nav.main-nav > ul a:hover {
+    
+}
+
+li.social-media a img {
+    transform: scale(1);
+    transition: all, .5s;
+}
+
+li.social-media a:hover img {
+    transform: scale(.7);
+    opacity: .8;
+    transition: all, .5s;
+}
+
 nav.main-nav > ul > li:first-child,
 nav.main-nav > ul > li:last-child {
     background: #2c2c2c;
     flex: 10%;
     display: flex;
+    transition: all, .5s;
+}
+
+nav.main-nav > ul > li:first-child:hover,
+nav.main-nav > ul > li:last-child:hover {
+    transition: all, .5s;
+    background: #848383;
 }
 
 nav.main-nav > ul > li:first-child a,
@@ -101,33 +134,108 @@ nav.main-nav > ul > li:last-child {
 
 
 .home-banner {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    text-shadow: 1px 2px 3px black;
     height: 100%;
     background-image: url('../images/background-home.jpg');
     background-position: center;
     background-size: cover;
+    display: flex;
 }
 
 /* Login */
 
 .formulaire-connexion  {
     display: flex;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
     background: #FFF;
     padding: 2em;
     -webkit-box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.41);
     -moz-box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.41);
     box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.41);
+    border: 2px solid grey;
+    border-radius: 20px;
+    width: 50%;
+    flex-wrap: wrap;
+    margin: auto;
 }
 
+.formulaire-connexion form {
+    margin: auto;
+    width: 40%;
+    text-align: center;
+    padding: 0px 20px;
+}
+
+.formulaire-connexion form h2 {
+    text-transform: uppercase;
+    color: grey;
+}
+
+.formulaire-connexion form label {
+    width: 100%;
+    display: block;
+    margin: 10px 0;
+    padding: 5px;
+}
+
+.formulaire-connexion form input {
+    width: 90%;
+    display: block;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 0 auto;
+}
+
+.formulaire-connexion form select {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    -webkit-appearance: menulist-text;
+    padding: 5px;
+    background: #FFF;
+    -webkit-box-shadow: 3px 4px 15px 0px rgba(0,0,0,0,2);
+    -moz-box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.2);
+    box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.2);
+    color: #000;
+}
+
+.formulaire-connexion form input[type="submit"],
+.formulaire-connexion form button{
+    width: 40%;
+    padding: 10px 5px;
+    margin: 0 auto;
+    margin-top: 20px;
+    border: 1px solid #FFF;
+    background: grey;
+    color: #FFF;
+    transition: all, .5s;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.formulaire-connexion form input[type="submit"]:hover,
+.formulaire-connexion form button:hover{
+    border: 1px solid grey;
+    background: #FFF;
+    color: grey;
+    transition: all, .5s;
+}
+
+.formulaire-connexion form button {
+    background: #F80F4B;
+    color: #FFF;
+    transition: all, .5s;
+}
+
+.formulaire-connexion form button:hover {
+    border: 1px solid #F80F4B;
+    background: #FFF;
+    color: #F80F4B;
+    transition: all, .5s;
+}
+
+.formulaire-connexion p {
+    margin: 0px auto;
+    margin-top: 25px;
+}
 
 /* Carte Etudiant */
 
@@ -207,12 +315,30 @@ a.btnbis{
     margin: initial;
 }
 
-img.image-avatar {
-    width: 50%;
+.container-avatar {
+    max-width: 300px;
+    max-height: 300px;
+    overflow: hidden;
+    margin-bottom: 20px;
 }
 
 div.zone-etudiants {
     flex:70%
+}
+
+.zone-etudiants h3 {
+    color: #00cc9c;
+    font-weight: bold;
+
+}
+
+.informations:after {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 1px;
+    background: #00cc9c;
+    margin: 20px;
 }
 
 
@@ -237,5 +363,151 @@ section.container-page.profil {
 .deuxieme-menu ul li a{
     text-transform:uppercase;
     color:black;
+}
+
+/* Responsive */
+
+/* Menu */
+
+@media screen and (max-width: 850px) {
+    nav.main-nav.dekstop {
+        display: none!important;
+    }
+    
+    .navigation.mobile{
+        display: block!important;
+    }
+
+#menuToggle
+{
+  display: block;
+  position: relative;
+  top: 50px;
+  left: 50px;
+  
+  z-index: 1;
+  
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menuToggle input
+{
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  
+  cursor: pointer;
+  
+  opacity: 0; 
+  z-index: 2; 
+  
+  -webkit-touch-callout: none;
+}
+
+#menuToggle span
+{
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  
+  background: #cdcdcd;
+  border-radius: 3px;
+  
+  z-index: 1;
+  
+  transform-origin: 4px 0px;
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+#menuToggle span:first-child
+{
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+}
+
+#menuToggle input:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #FFF;
+}
+
+#menuToggle input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+#menuToggle input:checked ~ span:nth-last-child(2)
+{
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+#menu
+{
+  position: absolute;
+  width: 380px;
+  margin: -100px 0 0 -50px;
+  padding: 50px;
+  padding-top: 125px;
+  
+  background: #000;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  
+  transform-origin: 0% 0%;
+  transform: translate(-150%, 0);
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+  -webkit-box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.41);
+    -moz-box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.41);
+    box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.41);
+}
+
+#menu li {
+    display: block;
+    padding: 40px 0;
+    border-bottom: 1px solid #fb0047;
+    text-align: center;
+}
+
+#menu li:last-child {
+    border: none;
+}
+
+#menu li a {
+    color: #FFF;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#menuToggle input:checked ~ div
+{
+  transform: none;
+}
+
+body.open-menu {
+    overflow: hidden;
+}
+
+/* Connexion et Inscription responsive */
+
+.formulaire-connexion form {
+    width: 80%;
+}
+    
 }
 

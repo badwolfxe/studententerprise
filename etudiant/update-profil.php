@@ -46,6 +46,13 @@ getHeader("Profil");
     <label>Spécialités</label>
     <input type="specialite" name="specialite" id="specialite" class="form-control" placeholder="" >
     <br>
+    <label>Date début de contrat</label>
+    <input type="debut_contrat" name="debut_contrat" id="telephone" class="form-control" placeholder="<?php echo $etudiant["date_debut_contrat"]; ?>" >
+    <br>
+    
+    <label>Date fin de contrat</label>
+    <input type="fin_contrat" name="fin_contrat" id="telephone" class="form-control" placeholder="<?php echo $etudiant["date_fin_contrat"]; ?>" >
+    <br>
     <label>CV</label>
     <br
         <?php echo $etudiant['cv']; ?><br>
