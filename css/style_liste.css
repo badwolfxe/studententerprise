@@ -42,3 +42,54 @@ select {
   width: 15em;
   height: 2em;
 }
+
+.AllSudents{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+img{
+    width: 40%;
+    clear: both;
+    margin: 1em;
+    
+}
+
+.students{
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.details{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.details img{
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+}
+
+.details h3{
+    margin: 13px 0;
+}
+
+.details_text{
+    width:500px;
+}
+
+.details_contact{
+    background: crimson;
+    margin-left: 10px;
+}
+
+.fa{
+    color: white;
+    padding: 15px;
+    display: block;
+    text-align: center;
+
