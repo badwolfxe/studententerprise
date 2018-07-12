@@ -58,3 +58,11 @@ $('select.select2').select2();
     });
 
 
+
+function show1(){
+  document.getElementById('liste-utilisateurs').style.display ='block';
+}
+function show2(){
+  document.getElementById('liste-utilisateurs').style.display = 'block';
+}
+

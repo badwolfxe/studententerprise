@@ -16,9 +16,11 @@ $etudiants = getAllEtudiant();
 
 ?>
 
-<div>
-    
-</div>
+
+<section class="container-page">
+<a><button id="test" name="etudiant" onclick="show1();">
+    Etudiants
+</button></a>
 
 <div>
 <table id="liste-utilisateurs" style="width:100%">
@@ -80,11 +82,10 @@ $etudiants = getAllEtudiant();
   <?php endforeach ;?>
 </table>
     
-    
-    
+
+
 </div>
-
-
+</section>
 
 
 

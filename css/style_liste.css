@@ -48,7 +48,7 @@ select {
     flex-wrap: wrap;
 }
 
-img{
+.AllSudents img{
     width: 40%;
     clear: both;
     margin: 1em;
