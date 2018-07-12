@@ -29,7 +29,7 @@ getHeader("Profil");
         <br>
         
         <label>Date de Naissance</label>
-        <input type="datenaissance" name="datenaissance" id="datenaissance" class="form-control" value="<?php echo $etudiant["date_naissance_format"]; ?>" >
+        <input type="datenaissance" name="datenaissance" id="datepicker" class="form-control" value="<?php echo $etudiant["date_naissance_format"]; ?>" >
         
         <br>
         

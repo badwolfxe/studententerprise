@@ -3,6 +3,17 @@ body, html, main {
     position: relative;
 }
 
+:root {
+    --main-blue: #00cc9c
+}
+
+
+h1, h2, h3 {
+    color: var(--main-blue);
+    font-weight: bold;
+}
+
+
 body {
     margin: 0;
     font-family: 'Open Sans', sans-serif;
@@ -125,7 +136,7 @@ nav.main-nav > ul > li:last-child a{
 }
 
 nav.main-nav > ul > li:first-child {
-    border-right: 2px solid #00cc9c;
+    border-right: 2px solid var(--main-blue);
 }
 
 nav.main-nav > ul > li:last-child {
@@ -327,7 +338,7 @@ div.zone-etudiants {
 }
 
 .zone-etudiants h3 {
-    color: #00cc9c;
+    color: var(--main-blue);
     font-weight: bold;
 
 }
@@ -337,7 +348,7 @@ div.zone-etudiants {
     display: block;
     width: 50%;
     height: 1px;
-    background: #00cc9c;
+    background: var(--main-blue);
     margin: 20px;
 }
 
@@ -365,6 +376,9 @@ section.container-page.update-profil{
     text-transform:uppercase;
     color:black;
 }
+
+/* Modification mot de passe */
+
 
 /* Responsive */
 
@@ -509,6 +523,48 @@ body.open-menu {
 .formulaire-connexion form {
     width: 80%;
 }
-    
+
+/* Menu profil */
+
+section.container-page.profil, section.container-page.update-profil {
+    flex-wrap: wrap;
+}
+
+.deuxieme-menu {
+    flex-grow: 0;
+    flex: none;
+    width: 50%;
+    margin: 0 auto;
+    padding: 0;
+
+}
+
+.deuxieme-menu ul {
+    padding: 0;
+    margin: 0;
+}
+
+.deuxieme-menu ul li {
+    text-align: center;
+}
+
+.zone-etudiants {
+    border-left: 0px solid #000!important;
+    text-align: center;
+}
+
+.container-avatar,
+a.btnbis{
+    margin: 0 auto;
+}
+
+.informations:after {
+    margin: 20px auto;
+}
+
+.container-page {
+    text-align: center;
+    padding: 20px 10px;
+}
 }
 

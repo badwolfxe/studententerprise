@@ -65,4 +65,3 @@ function show1(){
 function show2(){
   document.getElementById('liste-utilisateurs').style.display = 'block';
 }
-

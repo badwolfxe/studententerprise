@@ -5,7 +5,7 @@ require_once 'model/database.php';
 getHeader("Modification profil");
 ?>
 
-<section class="container-page menu-formulaire">
+<section class="container-page menu-formulaire modif-mdp">
     <?php require_once 'layout/menu-etudiant.php';?>
 <div class="formulaire">
 <h1>Réinitialiser votre mot de passe</h1>
