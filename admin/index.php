@@ -36,7 +36,7 @@ getHeader("Espace Admin");
         <div id="liste-utilisateurs" style="width:100%;">
             <div>
               <h3>Avatar</h3>
-               <img src="../uploads/<?php echo $utilisateur['avatar']; ?>">
+               <img src="../uploads/<?php echo $etudiant['avatar']; ?>">
             </div>
            
             <div>
