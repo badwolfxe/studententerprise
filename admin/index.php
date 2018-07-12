@@ -2,6 +2,13 @@
 require_once '../lib/functions.php';
 require_once '../model/database.php';
 
+$entreprises = getAllEntreprise();
+$etudiants = getAllEtudiant();
+
+if (!currentUserHasRole("admin")) {
+    header("Location: ../index.php");
+}
+
 getHeader("Espace Admin");
 ?>
 
@@ -9,88 +16,73 @@ getHeader("Espace Admin");
 
 <p>Controle de la plateforme</p>
 
-<?php
-
-$entreprises = getAllEntreprise();
-$etudiants = getAllEtudiant();
-
-?>
-
 <div>
-    
+
 </div>
 
 <div>
-<table id="liste-utilisateurs" style="width:100%">
-  <tr>
-    <th>Avatar</th>
-    <th>Nom</th> 
-    <th>Mail</th>
-    <th>Contrat</th>
-    <th>Valider</th>
-  </tr>
-  <?php foreach ($etudiants as $key => $etudiant) : ?>
-  <tr>
-    <td><img src="../uploads/<?php echo $utilisateur['avatar'];?>"></td>
-  </tr>
-  <tr>
-    <td><?php echo $etudiant['nom'] .' ' . $etudiant['prenom'];?></td>
-  </tr>
-  <tr>
-    <td><?php echo $etudiant['mail']; ?></td>
-  </tr>
-  <tr>
-    <td><?php echo $etudiant['contrat']; ?></td>
-  </tr>
-  <tr>
-      <td>
-           <input type="checkbox" id="actif-<?php echo $key; ?>" data-id="<?php echo $etudiant['id']; ?>" name="actif" <?php echo ($etudiant['validation'] == 1) ? 'checked' : '';?> />
-            <label for="actif-<?php echo $key; ?>">Actif <i class="fa fa-spinner fa-pulse fa-fw hidden"></i></label>
-        </td>
-  </tr>
-  <?php endforeach ;?>
-</table>
+    <table id="liste-utilisateurs" style="width:100%">
+        <tr>
+            <th>Avatar</th>
+            <th>Nom</th> 
+            <th>Mail</th>
+            <th>Contrat</th>
+            <th>Valider</th>
+        </tr>
+<?php foreach ($etudiants as $key => $etudiant) : ?>
+            <tr>
+                <td><img src="../uploads/<?php echo $utilisateur['avatar']; ?>"></td>
+            </tr>
+            <tr>
+                <td><?php echo $etudiant['nom'] . ' ' . $etudiant['prenom']; ?></td>
+            </tr>
+            <tr>
+                <td><?php echo $etudiant['mail']; ?></td>
+            </tr>
+            <tr>
+                <td><?php echo $etudiant['contrat']; ?></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="actif-<?php echo $key; ?>" data-id="<?php echo $etudiant['id']; ?>" name="actif" <?php echo ($etudiant['validation'] == 1) ? 'checked' : ''; ?> />
+                    <label for="actif-<?php echo $key; ?>">Actif <i class="fa fa-spinner fa-pulse fa-fw hidden"></i></label>
+                </td>
+            </tr>
+<?php endforeach; ?>
+    </table>
 </div>
-  
+
 <div>  
-   
-<table id="liste-entreprise" style="width:100%">
-  <tr>
-    <th>Logo</th>
-    <th>Nom</th> 
-    <th>Mail</th>
-    <th>Valider</th>
-  </tr>
-  <?php foreach ($entreprises as $key => $entreprise) : ?>
-  <tr>
-    <td><img src=".../uploads/<?php echo $entreprise['avatar'];?>"></td>
-  </tr>
-  <tr>
-    <td><?php echo $entreprise['nom'];?></td>
-  </tr>
-  <tr>
-    <td><?php echo $entreprise['mail']; ?></td>
-  </tr>
-  <tr>
-      <td>
-           <input type="checkbox" id="actif-<?php echo $entreprise['id']; ?>" data-id="<?php echo $entreprise['id']; ?>" name="actif" <?php echo ($entreprise['validation'] == 1) ? 'checked' : '';?> />
-            <label for="actif-<?php echo $entreprise['id']; ?>">Actif <i class="fa fa-spinner fa-pulse fa-fw hidden"></i></label>
-        </td>
-  </tr>
-  <?php endforeach ;?>
-</table>
-    
-    
-    
+
+    <table id="liste-entreprise" style="width:100%">
+        <tr>
+            <th>Logo</th>
+            <th>Nom</th> 
+            <th>Mail</th>
+            <th>Valider</th>
+        </tr>
+<?php foreach ($entreprises as $key => $entreprise) : ?>
+            <tr>
+                <td><img src=".../uploads/<?php echo $entreprise['avatar']; ?>"></td>
+            </tr>
+            <tr>
+                <td><?php echo $entreprise['nom']; ?></td>
+            </tr>
+            <tr>
+                <td><?php echo $entreprise['mail']; ?></td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="checkbox" id="actif-<?php echo $entreprise['id']; ?>" data-id="<?php echo $entreprise['id']; ?>" name="actif" <?php echo ($entreprise['validation'] == 1) ? 'checked' : ''; ?> />
+                    <label for="actif-<?php echo $entreprise['id']; ?>">Actif <i class="fa fa-spinner fa-pulse fa-fw hidden"></i></label>
+                </td>
+            </tr>
+<?php endforeach; ?>
+    </table>
+
+
+
 </div>
-
-
-
-
-
-
-
-
 
 
 <a class="btn deconnection" href="../admin/logout.php">Se déco</a>
