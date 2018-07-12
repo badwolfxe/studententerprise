@@ -35,7 +35,7 @@ getHeader("Espace étudiant");
         <div class="informations">
             <h3>Mes spécialités</h3>
             <?php foreach ($specialites as $specialite) : ?>
-                <p id="specialite"><?php echo $specialite['label']; ?></p>
+                <p id="specialite-forme"><?php echo $specialite['label']; ?></p>
             <?php endforeach; ?>
         </div>
         <div class="informations">

@@ -79,7 +79,6 @@ getHeader("Profil");
         
         <label>Lettre de motivation</label>
         <input type="lettremotivation" name="lettremotivation" id="specialite" class="form-control" placeholder="<?php echo $etudiant["lm"]; ?>">
-
         <button class="btn btn-lg btn-primary btn-block" type="submit">Valider</button>
     </form>
     </div>
