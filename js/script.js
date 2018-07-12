@@ -66,8 +66,10 @@ $('select.select2').select2();
 
 
 function show1(){
-  document.getElementById('liste-utilisateurs').style.display ='block';
+  document.getElementById('liste-utilisateurs').classList.toggle("display");
+  document.getElementById('liste-entreprise').classList.toggle("display");
 }
 function show2(){
-  document.getElementById('liste-utilisateurs').style.display = 'block';
+  document.getElementById('liste-utilisateurs').classList.toggle("display");
+  document.getElementById('liste-entreprise').classList.toggle("display");
 }

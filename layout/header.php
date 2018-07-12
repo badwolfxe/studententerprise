@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/jquery.datetimepicker.min.css">
         <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/style.css">
         <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/menu.css">
+        <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/style_admin.css">
         <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/style_liste.css">
         
         

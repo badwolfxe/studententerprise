@@ -1,3 +1,38 @@
 .hide {
-  display: none;
+  display: none!important;
+}
+
+.display {
+    display: none!important;
+}
+
+.list_admin{
+    display: flex;
+    width: 100%;
+    
+}
+
+
+#liste-utilisateurs{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction;
+    width: 100%; 
+}
+
+#liste-utilisateurs div{
+    flex: 1;
+    
+}
+
+#liste-entreprise{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction;
+    width: 100%; 
+}
+
+#liste-entreprise div{
+    flex: 1;
+    
 }
