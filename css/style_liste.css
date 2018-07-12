@@ -65,6 +65,7 @@ img{
 .details{
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .details img{
@@ -78,16 +79,17 @@ img{
 }
 
 .details_text{
-    width:400px;
+    width:500px;
 }
 
 .details_contact{
-    margin-left: 5em;
+    background: crimson;
+    margin-left: 10px;
 }
 
 .fa{
-    color: crimson;
+    color: white;
+    padding: 15px;
     display: block;
-    margin-bottom: 5px;
-}
+    text-align: center;
 

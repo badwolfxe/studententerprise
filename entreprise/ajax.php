@@ -1,7 +1,6 @@
 <?php
 require_once '../lib/functions.php';
 require_once '../model/database.php';
-require_once '../model/entity/etudiant_entity.php';
 ?>
 
 <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/style.css">
@@ -65,13 +64,18 @@ if (!empty($_POST["creation"]))
 <div class="details_text">
   <h3><?php echo $etudiant['nom'] .' ' . $etudiant['prenom'];?></h3>
   <h3><?php echo $etudiant['date_naissance_format'];?></h3>
-   <p>Je recherche un(e) <?php echo $etudiant['contrat']; ?></p>
-    </div>
+   <p>Je recherche un(e) <?php echo $etudiant['contrat']; ?> de 
+    <?php
+$datetime1 = $etudiant['date_debut'];
+$datetime2 = $etudiant['date_fin'];
+$interval = date_diff(new DateTime($datetime2), new DateTime($datetime1));
+echo $interval->format('%m mois');
+?>
+</p></div>
 <div class="details_contact">
-  <a href="mailto:<?php echo $etudiant['mail']; ?>"><i class="fa fa-2x fa-envelope" aria-hidden="true"></i></a>
-    <a href="mailto:<?php echo $etudiant['telephone']; ?>"><i class="fa fa-2x fa-phone-square" aria-hidden="true"></i></a>
-  
-  </div>
+  <a href="mailto:<?php echo $etudiant['mail']; ?>"><i class="fa fa-3x fa-envelope" aria-hidden="true"></i></a>
+    <a href="tel:<?php echo $etudiant['telephone']; ?>"><i class="fa fa-3x fa-phone-square" aria-hidden="true"></i></a>
+      </div>
   </div>
   <?php endforeach ; }?>
 

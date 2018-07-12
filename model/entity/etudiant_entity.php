@@ -9,6 +9,8 @@ function getAllEtudiant() {
 etudiant.nom AS nom,
 etudiant.prenom AS prenom,
 etudiant.numero_tel AS telephone,
+etudiant.date_debut_contrat AS date_debut,
+etudiant.date_fin_contrat AS date_fin,
 DATE_FORMAT(etudiant.date_naissance, '%e %M %Y') AS date_naissance_format,
 niveau_etude.id AS niveau,
 niveau_etude.label AS labelniveau,

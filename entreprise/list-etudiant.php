@@ -1,10 +1,6 @@
 <?php
 require_once '../lib/functions.php';
 require_once '../model/database.php';
-require_once '../model/entity/departement_entity.php';
-require_once '../model/entity/specialite_entity.php';
-require_once '../model/entity/etudiant_entity.php';
-
 
 $etudiants = getAllEtudiant();
 
