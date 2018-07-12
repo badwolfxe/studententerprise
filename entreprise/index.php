@@ -36,4 +36,4 @@ getHeader("Espace entreprise");
 
 </section>
 
-<?php getFooter; ?>
+<?php getFooter(); ?>

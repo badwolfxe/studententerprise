@@ -88,6 +88,7 @@ function updateEtudiant(string $nom, string $prenom, string $date_naissance, str
                 date_naissance = :date_naissance,
                 date_debut_contrat= :debut_contrat,
                 date_fin_contrat = :fin_contrat,
+                cv = :cv,
                 numero_tel = :telephone
                 WHERE id = :id;";
 
@@ -99,6 +100,7 @@ function updateEtudiant(string $nom, string $prenom, string $date_naissance, str
     $stmt->bindParam(":niveau", $niveau_etude);
     $stmt->bindParam(":fin_contrat", $fin_contrat);
     $stmt->bindParam(":debut_contrat", $debut_contrat);
+    $stmt->bindParam(":cv", $name_file_cv);
     $stmt->bindParam(":id", $id);
     $stmt->execute();
 
