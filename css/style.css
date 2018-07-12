@@ -261,6 +261,16 @@ section.liste-etudiant {
     flex: 30%;
 }
 
+/* Page entreprise liste */
+
+.liste-entreprises {
+  -webkit-box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.41);
+    -moz-box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.41);
+    box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.41);
+    padding: 20px;
+    width: 50%;
+}
+
 /* Page Attente */
 
 .page-attente {

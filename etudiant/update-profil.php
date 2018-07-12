@@ -59,14 +59,14 @@ getHeader("Profil");
         <br>
         
         <label>Date début de contrat</label>
-        <input type="debut_contrat" name="debut_contrat" id="datetimepicker1" type="text" value="<?php echo $etudiant["date_debut_contrat"]; ?>">
+        <input type="date" name="debut_contrat" value="<?php echo $etudiant["date_debut_contrat"]; ?>">
        
         
         <br>
 
         <label>Date fin de contrat</label>
         
-        <input type="fin_contrat" name="fin_contrat" id="datetimepicker2" type="text" value="<?php echo $etudiant["date_fin_contrat"]; ?>">
+        <input type="date" name="fin_contrat" value="<?php echo $etudiant["date_fin_contrat"]; ?>">
        
         
         <br>
@@ -75,12 +75,18 @@ getHeader("Profil");
             <?php echo $etudiant['cv']; ?><br>
         Cv à Uploader:<br>
 
-        <input type="file" name="fileToUpload" id="fileToUpload">
+        <input type="file" name="cv">
         
         <br>
         
         <label>Lettre de motivation</label>
-        <input type="lettremotivation" name="lettremotivation" id="specialite" class="form-control" placeholder="<?php echo $etudiant["lm"]; ?>">
+            <?php echo $etudiant['lm']; ?><br>
+        Lettre de motivation à Uploader:<br>
+
+        <input type="file" name="lm">
+        
+        <br>
+        
         <button class="btn btn-lg btn-primary btn-block" type="submit">Valider</button>
     </form>
     </div>

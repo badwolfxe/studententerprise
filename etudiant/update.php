@@ -4,6 +4,7 @@ require_once '../lib/functions.php';
 require_once '../model/database.php';
 
 $user = currentUser();
+$etudiant = getEtudiant($user["id"]);
 
 $prenom = $_POST['prenom'];
 $nom = $_POST['nom'];
@@ -14,23 +15,24 @@ $niveau_etude = $_POST['niveau_etude'];
 $debut_contrat = $_POST['debut_contrat'];
 $fin_contrat = $_POST['fin_contrat'];
 
-$target_dir = "../uploads/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-$name_file_cv = basename($_FILES["fileToUpload"]["name"]);
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-// Check if $uploadOk is set to 0 by an error
-if ($uploadOk == 0) {
-    echo "Sorry, your file was not uploaded.";
-// if everything is ok, try to upload file
-} else {
-    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-        updateEtudiant($nom, $prenom, $date_naissance, $email, $telephone, $user["id"], $niveau_etude, $name_file_cv, $debut_contrat, $fin_contrat);
-    } else {
-        echo "Sorry, there was an error uploading your file. ";
-    }
+$cv = $etudiant["cv"];
+$lm = $etudiant["lm"];
+
+if ($_FILES["cv"]["error"] == 0) {
+    $filename = basename($_FILES["cv"]["name"]);
+    $target_file = "../uploads/" . $filename;
+    move_uploaded_file($_FILES["cv"]["tmp_name"], $target_file);
+    $cv = $filename;
 }
 
+if ($_FILES["lm"]["error"] == 0) {
+    $filename = basename($_FILES["lm"]["name"]);
+    $target_file = "../uploads/" . $filename;
+    move_uploaded_file($_FILES["lm"]["tmp_name"], $target_file);
+    $lm = $filename;
+}
+
+updateEtudiant($nom, $prenom, $date_naissance, $email, $telephone, $user["id"], $niveau_etude, $cv, $lm, $debut_contrat, $fin_contrat);
 
 header("Location: index.php");
 

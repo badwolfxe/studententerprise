@@ -6,7 +6,7 @@ if (!currentUserHasRole("etudiant")) {
     header("Location: ../index.php");
 }
 
-$etudiants = getAllEtudiant();
+$etudiants = getAllEtudiants();
 $departement = getDepartementByEtudiant();
 
 

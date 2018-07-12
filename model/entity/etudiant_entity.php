@@ -1,34 +1,5 @@
 <?php
 
-function getAllEtudiant() {
-    /* @var $connection PDO */
-    global $connection;
-
-    $query = "SELECT
-    etudiant.id,
-etudiant.nom AS nom,
-etudiant.prenom AS prenom,
-etudiant.numero_tel AS telephone,
-etudiant.date_debut_contrat AS date_debut,
-etudiant.date_fin_contrat AS date_fin,
-DATE_FORMAT(etudiant.date_naissance, '%e %M %Y') AS date_naissance_format,
-niveau_etude.id AS niveau,
-niveau_etude.label AS labelniveau,
-contrat.label AS contrat,
-utilisateur.mail AS mail,
-utilisateur.valide AS validation,
-utilisateur.avatar AS avatar
-FROM etudiant
-INNER JOIN utilisateur ON utilisateur.id = etudiant.id
-INNER JOIN niveau_etude ON niveau_etude.id = etudiant.niveau_etude_id
-INNER JOIN contrat ON contrat.id = etudiant.contrat_id";
-
-    $stmt = $connection->prepare($query);
-    $stmt->execute();
-
-    return $stmt->fetchAll();
-}
-
 function getAllDepartements() {
     /* @var $connection PDO */
     global $connection;
@@ -41,7 +12,6 @@ function getAllDepartements() {
     $stmt->execute();
     return $stmt->fetchAll();
 }
-
 
 function insertEtudiant(string $nom, string $prenom, string $date_naissance, string $numero_tel, string $cv, string $lettre_motivation, $niveau_etu) {
     /* @var $connection PDO */
@@ -76,7 +46,7 @@ function insertEtudiant(string $nom, string $prenom, string $date_naissance, str
     $stmt->execute();
 }
 
-function updateEtudiant(string $nom, string $prenom, string $date_naissance, string $email, string $telephone, int $id, string $niveau_etude, string $name_file_cv, string $debut_contrat, string $fin_contrat) {
+function updateEtudiant(string $nom, string $prenom, string $date_naissance, string $email, string $telephone, int $id, string $niveau_etude, string $name_file_cv, string $name_file_lm, string $debut_contrat, string $fin_contrat) {
     /* @var $connection PDO */
     global $connection;
 
@@ -89,6 +59,7 @@ function updateEtudiant(string $nom, string $prenom, string $date_naissance, str
                 date_debut_contrat= :debut_contrat,
                 date_fin_contrat = :fin_contrat,
                 cv = :cv,
+                lettre_motivation = :lm,
                 numero_tel = :telephone
                 WHERE id = :id;";
 
@@ -101,16 +72,16 @@ function updateEtudiant(string $nom, string $prenom, string $date_naissance, str
     $stmt->bindParam(":fin_contrat", $fin_contrat);
     $stmt->bindParam(":debut_contrat", $debut_contrat);
     $stmt->bindParam(":cv", $name_file_cv);
+    $stmt->bindParam(":lm", $name_file_lm);
     $stmt->bindParam(":id", $id);
     $stmt->execute();
 
     updateProfilUtilisateur($email, $id);
-
 }
 
- function updateProfilUtilisateur(string $email, int $id) {
-     global $connection;
-        $query = "UPDATE utilisateur
+function updateProfilUtilisateur(string $email, int $id) {
+    global $connection;
+    $query = "UPDATE utilisateur
                 SET
                 mail = :mail
                 WHERE id = :id;";
@@ -121,19 +92,18 @@ function updateEtudiant(string $nom, string $prenom, string $date_naissance, str
     $stmt->execute();
 }
 
-
-function getEtudiant($id){
-    global $connection;
-
-    $query = "SELECT
+function getEtudiantQuery() {
+    return "SELECT
                 etudiant.id,
                 etudiant.nom AS nom,
                 etudiant.prenom,
+                etudiant.date_naissance,
+                etudiant.date_debut_contrat,
+                etudiant.date_fin_contrat,
                 DATE_FORMAT(etudiant.date_naissance, '%e %M %Y') AS date_naissance_format,
-                DATE_FORMAT(etudiant.date_debut_contrat, '%e %M %Y') AS date_debut_contrat,
-                DATE_FORMAT(etudiant.date_fin_contrat, '%e %M %Y') AS date_fin_contrat,
-                etudiant.date_debut_contrat AS date_debut,
-                etudiant.date_fin_contrat AS date_fin,
+                DATE_FORMAT(etudiant.date_debut_contrat, '%e %M %Y') AS date_debut_contrat_format,
+                DATE_FORMAT(etudiant.date_fin_contrat, '%e %M %Y') AS date_fin_contrat_format,
+                TIMESTAMPDIFF(MONTH, etudiant.date_debut_contrat, etudiant.date_fin_contrat) AS duree_contrat,
                 etudiant.numero_tel AS telephone,
                 etudiant.cv AS cv,
                 etudiant.lettre_motivation AS lm,
@@ -145,230 +115,57 @@ function getEtudiant($id){
                 utilisateur.mail AS mail
             FROM etudiant
             INNER JOIN utilisateur ON utilisateur.id = etudiant.id
-            INNER JOIN contrat ON etudiant.contrat_id = contrat.id
-            INNER JOIN niveau_etude ON etudiant.niveau_etude_id = niveau_etude.id
-            WHERE etudiant.id = :id;
-	  ";
-
-$stmt = $connection->prepare($query);
-$stmt->bindParam(':id', $id);
-$stmt->execute();
-
-return $stmt->fetch();
+            LEFT JOIN contrat ON etudiant.contrat_id = contrat.id
+            LEFT JOIN niveau_etude ON etudiant.niveau_etude_id = niveau_etude.id
+            LEFT JOIN departement_has_etudiant ON etudiant.id = departement_has_etudiant.etudiant_id
+            LEFT JOIN etudiant_has_specialite ON etudiant.id = etudiant_has_specialite.etudiant_id
+            ";
 }
 
-function getEtudiantBy($departement_id=NULL, $niveau_etude_id=NULL, $specialite_id=NULL)
-{
+function getEtudiant($id) {
+    global $connection;
+    
+    $query = getEtudiantQuery();
+
+    $query .= "WHERE etudiant.id = :id GROUP BY utilisateur.id;";
+
+    $stmt = $connection->prepare($query);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+
+    return $stmt->fetch();
+}
+
+function getAllEtudiants(array $params = []) {
     global $connection;
 
-    if (($departement_id != NULL) || ($niveau_etude_id != NULL) || ($specialite_id != NULL))
-    {
-      if (($departement_id == NULL) && ($niveau_etude_id == NULL) && ($specialite_id != NULL))
-      {
-        $query = "SELECT DISTINCT
-                    etudiant.id,
-                    etudiant.nom AS nom,
-                    etudiant.prenom,
-                    DATE_FORMAT(etudiant.date_naissance, '%e %M %Y') AS date_naissance_format,
-                    etudiant.numero_tel AS telephone,
-                    etudiant.cv AS cv,
-                    etudiant.lettre_motivation AS lm,
-                    niveau_etude.label AS labelniveau,
-                    contrat.label AS contrat,
-                    etudiant.actif,
-                    etudiant.niveau_etude_id,
-                    utilisateur.avatar AS avatar,
-                    utilisateur.mail AS mail
-                FROM etudiant
-                INNER JOIN utilisateur ON utilisateur.id = etudiant.id
-                INNER JOIN contrat ON etudiant.contrat_id = contrat.id
-                INNER JOIN niveau_etude ON etudiant.niveau_etude_id = niveau_etude.id
-                INNER JOIN etudiant_has_specialite ON etudiant.id = etudiant_has_specialite.etudiant_id
-                WHERE etudiant_has_specialite.specialite_id = :specialite_id
-                AND etudiant_has_specialite.etudiant_id = etudiant.id;
-        ";
-        $stmt = $connection->prepare($query);
-        $stmt->bindParam(':specialite_id', $specialite_id);
-      }
-      elseif (($departement_id == NULL) && ($niveau_etude_id != NULL) && ($specialite_id == NULL))
-      {
-        $query = "SELECT DISTINCT
-                    etudiant.id,
-                    etudiant.nom AS nom,
-                    etudiant.prenom,
-                    DATE_FORMAT(etudiant.date_naissance, '%e %M %Y') AS date_naissance_format,
-                    etudiant.numero_tel AS telephone,
-                    etudiant.cv AS cv,
-                    etudiant.lettre_motivation AS lm,
-                    niveau_etude.label AS labelniveau,
-                    contrat.label AS contrat,
-                    etudiant.actif,
-                    etudiant.niveau_etude_id,
-                    utilisateur.avatar AS avatar,
-                    utilisateur.mail AS mail
-                FROM etudiant
-                INNER JOIN utilisateur ON utilisateur.id = etudiant.id
-                INNER JOIN contrat ON etudiant.contrat_id = contrat.id
-                INNER JOIN niveau_etude ON etudiant.niveau_etude_id = niveau_etude.id
-                WHERE niveau_etude.id = :niveau_etude_id
-        ";
-        $stmt = $connection->prepare($query);
-        $stmt->bindParam(':niveau_etude_id', $niveau_etude_id);
-      }
-      elseif (($departement_id != NULL) && ($niveau_etude_id == NULL) && ($specialite_id == NULL))
-      {
-        $query = "SELECT DISTINCT
-                    etudiant.id,
-                    etudiant.nom AS nom,
-                    etudiant.prenom,
-                    DATE_FORMAT(etudiant.date_naissance, '%e %M %Y') AS date_naissance_format,
-                    etudiant.numero_tel AS telephone,
-                    etudiant.cv AS cv,
-                    etudiant.lettre_motivation AS lm,
-                    niveau_etude.label AS labelniveau,
-                    contrat.label AS contrat,
-                    etudiant.actif,
-                    etudiant.niveau_etude_id,
-                    utilisateur.avatar AS avatar,
-                    utilisateur.mail AS mail
-                FROM etudiant
-                INNER JOIN utilisateur ON utilisateur.id = etudiant.id
-                INNER JOIN contrat ON etudiant.contrat_id = contrat.id
-                INNER JOIN niveau_etude ON etudiant.niveau_etude_id = niveau_etude.id
-                INNER JOIN departement_has_etudiant ON etudiant.id = departement_has_etudiant.etudiant_id
-                INNER JOIN etudiant_has_specialite ON etudiant.id = etudiant_has_specialite.etudiant_id
-                WHERE departement_has_etudiant.departement_id = :departement_id
-                AND departement_has_etudiant.etudiant_id = etudiant.id;
-        ";
-        $stmt = $connection->prepare($query);
-        $stmt->bindParam(':departement_id', $departement_id);
-      }
-      elseif (($departement_id != NULL) && ($niveau_etude_id != NULL) && ($specialite_id == NULL))
-      {
-        $query = "SELECT DISTINCT
-                    etudiant.id,
-                    etudiant.nom AS nom,
-                    etudiant.prenom,
-                    DATE_FORMAT(etudiant.date_naissance, '%e %M %Y') AS date_naissance_format,
-                    etudiant.numero_tel AS telephone,
-                    etudiant.cv AS cv,
-                    etudiant.lettre_motivation AS lm,
-                    niveau_etude.label AS labelniveau,
-                    contrat.label AS contrat,
-                    etudiant.actif,
-                    etudiant.niveau_etude_id,
-                    utilisateur.avatar AS avatar,
-                    utilisateur.mail AS mail
-                FROM etudiant
-                INNER JOIN utilisateur ON utilisateur.id = etudiant.id
-                INNER JOIN contrat ON etudiant.contrat_id = contrat.id
-                INNER JOIN niveau_etude ON etudiant.niveau_etude_id = niveau_etude.id
-                INNER JOIN departement_has_etudiant ON etudiant.id = departement_has_etudiant.etudiant_id
-                WHERE niveau_etude.id = :niveau_etude_id
-                AND departement_has_etudiant.departement_id = :departement_id
-                AND departement_has_etudiant.etudiant_id = etudiant.id;
-        ";
-        $stmt = $connection->prepare($query);
-        $stmt->bindParam(':niveau_etude_id', $niveau_etude_id);
-        $stmt->bindParam(':departement_id', $departement_id);
-      }
-      elseif (($departement_id != NULL) && ($niveau_etude_id == NULL) && ($specialite_id != NULL))
-      {
-        $query = "SELECT DISTINCT
-                    etudiant.id,
-                    etudiant.nom AS nom,
-                    etudiant.prenom,
-                    DATE_FORMAT(etudiant.date_naissance, '%e %M %Y') AS date_naissance_format,
-                    etudiant.numero_tel AS telephone,
-                    etudiant.cv AS cv,
-                    etudiant.lettre_motivation AS lm,
-                    niveau_etude.label AS labelniveau,
-                    contrat.label AS contrat,
-                    etudiant.actif,
-                    etudiant.niveau_etude_id,
-                    utilisateur.avatar AS avatar,
-                    utilisateur.mail AS mail
-                FROM etudiant
-                INNER JOIN utilisateur ON utilisateur.id = etudiant.id
-                INNER JOIN contrat ON etudiant.contrat_id = contrat.id
-                INNER JOIN niveau_etude ON etudiant.niveau_etude_id = niveau_etude.id
-                INNER JOIN departement_has_etudiant ON etudiant.id = departement_has_etudiant.etudiant_id
-                INNER JOIN etudiant_has_specialite ON etudiant.id = etudiant_has_specialite.etudiant_id
-                WHERE departement_has_etudiant.departement_id = :departement_id
-                AND departement_has_etudiant.etudiant_id = etudiant.id
-                AND etudiant_has_specialite.specialite_id = :specialite_id
-                AND etudiant_has_specialite.etudiant_id = etudiant.id;
-        ";
-        $stmt = $connection->prepare($query);
-        $stmt->bindParam(':departement_id', $departement_id);
-        $stmt->bindParam(':specialite_id', $specialite_id);
-      }
-      elseif (($departement_id == NULL) && ($niveau_etude_id != NULL) && ($specialite_id != NULL))
-      {
-        $query = "SELECT DISTINCT
-                    etudiant.id,
-                    etudiant.nom AS nom,
-                    etudiant.prenom,
-                    DATE_FORMAT(etudiant.date_naissance, '%e %M %Y') AS date_naissance_format,
-                    etudiant.numero_tel AS telephone,
-                    etudiant.cv AS cv,
-                    etudiant.lettre_motivation AS lm,
-                    niveau_etude.label AS labelniveau,
-                    contrat.label AS contrat,
-                    etudiant.actif,
-                    etudiant.niveau_etude_id,
-                    utilisateur.avatar AS avatar,
-                    utilisateur.mail AS mail
-                FROM etudiant
-                INNER JOIN utilisateur ON utilisateur.id = etudiant.id
-                INNER JOIN contrat ON etudiant.contrat_id = contrat.id
-                INNER JOIN niveau_etude ON etudiant.niveau_etude_id = niveau_etude.id
-                INNER JOIN etudiant_has_specialite ON etudiant.id = etudiant_has_specialite.etudiant_id
-                WHERE niveau_etude.id = :niveau_etude_id
-                AND etudiant_has_specialite.specialite_id = :specialite_id
-                AND etudiant_has_specialite.etudiant_id = etudiant.id;
-        ";
-        $stmt = $connection->prepare($query);
-        $stmt->bindParam(':niveau_etude_id', $niveau_etude_id);
-        $stmt->bindParam(':specialite_id', $specialite_id);
-      }
-      elseif (($departement_id != NULL) && ($niveau_etude_id != NULL) && ($specialite_id != NULL))
-      {
-        $query = "SELECT
-                    etudiant.id,
-                    etudiant.nom AS nom,
-                    etudiant.prenom,
-                    DATE_FORMAT(etudiant.date_naissance, '%e %M %Y') AS date_naissance_format,
-                    etudiant.numero_tel AS telephone,
-                    etudiant.cv AS cv,
-                    etudiant.lettre_motivation AS lm,
-                    niveau_etude.label AS labelniveau,
-                    contrat.label AS contrat,
-                    etudiant.actif,
-                    etudiant.niveau_etude_id,
-                    utilisateur.avatar AS avatar,
-                    utilisateur.mail AS mail
-                FROM etudiant
-                INNER JOIN utilisateur ON utilisateur.id = etudiant.id
-                INNER JOIN contrat ON etudiant.contrat_id = contrat.id
-                INNER JOIN niveau_etude ON etudiant.niveau_etude_id = niveau_etude.id
-                INNER JOIN departement_has_etudiant ON etudiant.id = departement_has_etudiant.etudiant_id
-                INNER JOIN etudiant_has_specialite ON etudiant.id = etudiant_has_specialite.etudiant_id
-                WHERE departement_has_etudiant.departement_id = :departement_id
-                AND departement_has_etudiant.etudiant_id = etudiant.id
-                AND niveau_etude.id = :niveau_etude_id
-                AND etudiant_has_specialite.specialite_id = :specialite_id
-                AND etudiant_has_specialite.etudiant_id = etudiant.id;
-        ";
-        $stmt = $connection->prepare($query);
-        $stmt->bindParam(':departement_id', $departement_id);
-        $stmt->bindParam(':niveau_etude_id', $niveau_etude_id);
-        $stmt->bindParam(':specialite_id', $specialite_id);
-      }
-
-      $stmt->execute();
-      return $stmt->fetchAll();
+    $query = getEtudiantQuery();
+    
+    $query .= "WHERE 1 = 1 ";
+    
+    if (isset($params["departement"]) && is_numeric($params["departement"]) && $params["departement"] > 0) {
+        $query .= "AND departement_has_etudiant.departement_id = :departement_id ";
     }
+    if (isset($params["niveau_etude"]) && is_numeric($params["niveau_etude"]) && $params["niveau_etude"] > 0) {
+        $query .= "AND niveau_etude.id = :niveau_etude_id ";
+    }
+    if (isset($params["specialite"]) && is_numeric($params["specialite"]) && $params["specialite"] > 0) {
+        $query .= "AND etudiant_has_specialite.specialite_id = :specialite_id ";
+    }
+    
+    $query .= "GROUP BY utilisateur.id ";
 
-    return False;
+    $stmt = $connection->prepare($query);
+    if (isset($params["departement"]) && is_numeric($params["departement"]) && $params["departement"] > 0) {
+        $stmt->bindParam(':departement_id', $params["departement"]);
+    }
+    if (isset($params["niveau_etude"]) && is_numeric($params["niveau_etude"]) && $params["niveau_etude"] > 0) {
+        $stmt->bindParam(':niveau_etude_id', $params["niveau_etude"]);
+    }
+    if (isset($params["specialite"]) && is_numeric($params["specialite"]) && $params["specialite"] > 0) {
+        $stmt->bindParam(':specialite_id', $params["specialite"]);
+    }
+    $stmt->execute();
+
+    return $stmt->fetchAll();
 }
