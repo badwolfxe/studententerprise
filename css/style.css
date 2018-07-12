@@ -271,6 +271,31 @@ section.liste-etudiant {
     width: 50%;
 }
 
+a.doc_etudiant {
+    padding: 20px;
+    margin: 0 0;
+    display: block;
+    width: fit-content;
+    background: var(--main-blue);
+    color: #FFF;
+    border: 1px solid #FFF;
+    transition: all, .5s;
+}
+
+a.doc_etudiant:hover {
+    background: #FFF;
+    color: var(--main-blue);
+    border: 1px solid var(--main-blue);
+    transition: all, .5s;
+}
+
+.AllSudents .details{
+    -webkit-box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.41);
+    -moz-box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.41);
+    box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.41);
+    padding: 20px;
+}
+
 /* Page Attente */
 
 .page-attente {
@@ -386,8 +411,6 @@ section.container-page.update-profil{
     text-transform:uppercase;
     color:black;
 }
-
-/* Modification mot de passe */
 
 
 /* Responsive */

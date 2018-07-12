@@ -1,4 +1,5 @@
 <?php
+
 require_once 'lib/functions.php';
 require_once 'model/database.php';
 
@@ -12,20 +13,15 @@ if (!is_null($user['admin'])) {
     header('Location: entreprise/index.php');
 }
 
-$liste_etudiant = getAllEtudiant();
-
-// Déclaration des variables
-/*$list_projects = getAllProjects(3);*/
-
 getHeader("Accueil");
 ?>
 
 <section class="home-banner">
 
 
-<div class="formulaire-connexion">
+    <div class="formulaire-connexion">
         <form action="login.php" method="POST">
-             <h2 class="h3 mb-3 font-weight-normal">Connexion</h2>
+            <h2 class="h3 mb-3 font-weight-normal">Connexion</h2>
             <div>
                 <label>Email :</label>
                 <input type="email" name="email" placeholder="hello@gmail.com">
@@ -36,14 +32,14 @@ getHeader("Accueil");
             </div>
             <input type="submit">
         </form>
-    <br>
-    
-    <?php include 'nouveau-utilisateur.php'; ?>
-    <p>En validant votre inscription vous acceptez <a href="">nos conditions d'utilisation.</a></p>
-</div>
-    
-    </section>
-    
+        <br>
+
+        <?php include 'nouveau-utilisateur.php'; ?>
+        <p>En validant votre inscription vous acceptez <a href="">nos conditions d'utilisation.</a></p>
+    </div>
+
+</section>
+
 
 <?php getFooter(); ?>
 

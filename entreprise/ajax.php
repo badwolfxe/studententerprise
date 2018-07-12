@@ -15,6 +15,11 @@ $etudiants = getAllEtudiants($_POST);
                     <div class="details_text">
                         <h3><?php echo $etudiant['nom'] . ' ' . $etudiant['prenom']; ?></h3>
                         <h3><?php echo $etudiant['date_naissance_format']; ?></h3>
+                        
+                        <a  class="doc_etudiant" target="_blank" href="<?php echo SITE_URL; ?>uploads/<?php echo $etudiant['cv']; ?>"><?php echo $etudiant["cv"] ?></a>
+                        <br>
+                        <a class="doc_etudiant" target="_blank" href="<?php echo SITE_URL; ?>uploads/<?php echo $etudiant['lm']; ?>"><?php echo $etudiant['lm']; ?></a>
+        
                         <p>Je recherche un(e) <?php echo $etudiant['contrat']; ?> de 
 
                             <?php echo $etudiant["duree_contrat"] ?>
