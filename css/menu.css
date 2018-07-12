@@ -30,10 +30,12 @@ a{
     color:#000;
 }
 
-a.importation {
+.importation {
     background-color:#EFEFEF;
     padding:10px 10px;
     border-radius:10px;
+    width:50%;
+    text-align: center;
     
 }
 
@@ -48,8 +50,34 @@ a.importation {
     
 }
 
-input.btn {
+input.btn-valider {
     background: #975;
+    padding: 20px 50px;
+    display: block;
+    max-width: 200px;
+    text-align:center;
+    margin-top:20px;
+    color: #FFF;
+    border: 1px solid #FFF;
+    transition: all, .5s;
+    font-size:16px;
+    height:auto;
+}
+
+
+input.btn-valider:hover {
+    color: #975;
+    border: 1px solid #975;
+    background: #FFF;
+    transition: all, .5s;
+}
+
+.update-profil {
+    display:flex;
+}
+
+button.btn {
+     background: #975;
     padding: 20px 50px;
     display: block;
     max-width: 200px;
@@ -61,15 +89,28 @@ input.btn {
     font-size:16px;
 }
 
-
-input.btn:hover {
+button.btn:hover{
     color: #975;
     border: 1px solid #975;
     background: #FFF;
     transition: all, .5s;
 }
 
-.update-profil {
-    display:flex;
+.inscription label{
+    margin-bottom:10px;
 }
 
+.inscription input{
+    margin-bottom:10px;
+}
+
+input{
+    height:20px;
+    width:200px;
+    margin-left:10px;
+}
+
+.select2 {
+    margin-bottom:10px;
+    margin-left:10px;
+}

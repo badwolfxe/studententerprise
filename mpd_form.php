@@ -24,7 +24,7 @@ getHeader("Modification profil");
         <input type="password" name="libelle_mot_de_passe">
     </div>
 
-    <input type="submit" class="btn">
+    <input type="submit" class="btn-valider">
 
 </form>
 </div>

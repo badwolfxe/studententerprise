@@ -18,31 +18,31 @@ getHeader("Profil");
     <form action="update.php" method="post" class="form-signin inscription" enctype="multipart/form-data">
         <h1 class="h3 mb-3 font-weight-normal">Modifier son profil</h1>
 
-        <label>Nom</label>
+        <label>Nom : </label>
         <input type="nom" name="nom" id="nom" class="form-control" value="<?php echo $etudiant["nom"]; ?>" >
        
         <br>
         
-        <label>Prénom</label>
+        <label>Prénom : </label>
         <input type="prenom" name="prenom" id="prenom" class="form-control" value="<?php echo $etudiant["prenom"]; ?>" >
         
         <br>
         
-        <label>Date de Naissance</label>
+        <label>Date de Naissance : </label>
         <input type="datenaissance" name="datenaissance" id="datetimepicker" type="text" value="<?php echo $etudiant["date_naissance_format"]; ?>">
         <br>
         
-        <label>Email</label>
+        <label>Email : </label>
         <input type="email" name="email" id="email" class="form-control" value="<?php echo $etudiant["mail"]; ?>" >
         
         <br>
         
-        <label>Téléphone</label>
+        <label>Téléphone : </label>
         <input type="telephone" name="telephone" id="telephone" class="form-control" value="<?php echo $etudiant["telephone"]; ?>" >
         
         <br>
         
-        <label>Niveau études</label>
+        <label>Niveau études : </label>
         <select class="select2" name="niveau_etude">
             <?php foreach ($niveau_etudes as $niveau_etude) : ?>
                 <option value="<?php echo $niveau_etude["id"]; ?>" <?php echo ($niveau_etude["id"] == $etudiant["niveau_etude_id"]) ? "selected" : ""; ?>>
@@ -53,35 +53,35 @@ getHeader("Profil");
         
         <br>
         
-        <label>Spécialités</label>
+        <label>Spécialités : </label>
         <input type="specialite" name="specialite" id="specialite" class="form-control" value="" >
         
         <br>
         
-        <label>Date début de contrat</label>
+        <label>Date début de contrat : </label>
         <input type="date" name="debut_contrat" value="<?php echo $etudiant["date_debut_contrat"]; ?>">
        
         
         <br>
 
-        <label>Date fin de contrat</label>
+        <label>Date fin de contrat : </label>
         
         <input type="date" name="fin_contrat" value="<?php echo $etudiant["date_fin_contrat"]; ?>">
        
         
         <br>
         
-        <label>CV</label>
-            <?php echo $etudiant['cv']; ?><br>
-        Cv à Uploader:<br>
+        <label>CV : </label>
+        <p class="importation"><?php echo $etudiant['cv']; ?></p><br>
+        Cv à Uploader : <br>
 
         <input type="file" name="cv">
         
         <br>
         
-        <label>Lettre de motivation</label>
-            <?php echo $etudiant['lm']; ?><br>
-        Lettre de motivation à Uploader:<br>
+        <label>Lettre de motivation : </label>
+        <p class="importation"><?php echo $etudiant['lm']; ?></p><br>
+        Lettre de motivation à Uploader : <br>
 
         <input type="file" name="lm">
         
