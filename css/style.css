@@ -207,6 +207,10 @@ img.image-avatar {
     width: 50%;
 }
 
+div.zone-etudiants {
+    flex:70%
+}
+
 
 /* deuxieme menu */
 
