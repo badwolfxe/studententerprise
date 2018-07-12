@@ -115,13 +115,17 @@ nav.main-nav > ul > li:last-child {
 
 /* Login */
 
-.formulaire-connexion {
+.formulaire-connexion  {
+    display: flex;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
     background: #FFF;
     padding: 2em;
+    -webkit-box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.41);
+    -moz-box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.41);
+    box-shadow: 3px 4px 15px 0px rgba(0,0,0,0.41);
 }
 
 

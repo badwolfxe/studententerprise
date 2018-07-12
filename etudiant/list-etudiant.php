@@ -20,7 +20,7 @@ $departement = getDepartementByEtudiant();
 
 <?php if (isset ($etudiant['publication']) == 1 ){ ?>
 
-<img src="images/<?php echo $etudiant['avatar']?>">
+<img src="<?php echo SITE_URL ; ?>uploads/<?php echo $etudiant['avatar']?>">
 
 <h3><?php echo $etudiant['nom'] .' ' . $etudiant['prenom'];?></h3>
 <h3><?php echo $etudiant['date_naissance_format'];?></h3>

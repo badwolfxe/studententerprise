@@ -26,8 +26,6 @@ getHeader("Accueil");
 
 
 <div class="formulaire-connexion">
-    
-     <section>
         <form action="login.php" method="POST">
             <div>
                 <label>Email :</label>
@@ -39,7 +37,6 @@ getHeader("Accueil");
             </div>
             <input type="submit">
         </form>
-    </section> 
     
     <br>
     
