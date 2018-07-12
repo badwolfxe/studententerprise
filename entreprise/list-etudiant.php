@@ -5,8 +5,17 @@ require_once '../model/entity/departement_entity.php';
 require_once '../model/entity/specialite_entity.php';
 require_once '../model/entity/etudiant_entity.php';
 
+
+$etudiants = getAllEtudiant();
+
 getHeader("Espace étudiant");
 ?>
+
+<section class="head_list">
+
+<button class="btn retour"><a href="index.php">Retour</a></button>
+<h1>Trouvez l'élu</h1>
+<p>Sélectionnez vos besoins</p>
 
 <select id="departement" >
 <option value="" selected>Choisir un département</option>
@@ -41,28 +50,23 @@ getHeader("Espace étudiant");
 <?php endforeach ;?>
 </select>
 
+</section>
+
+
+
+
 <section class="container-page">
 
-<h1>Trouvez l'élu</h1>
 
-<?php
-$etudiants = getAllEtudiant();
-?>
-
-<!-- <?php foreach ($etudiants as $etudiant) : ?>
-<img src="images/<?php echo $etudiant['avatar']?>">
+<?php foreach ($etudiants as $etudiant) : ?>
+<img src="../uploads/<?php echo $etudiant['avatar']?>">
 
 <h3><?php echo $etudiant['nom'] .' ' . $etudiant['prenom'];?></h3>
 <h3><?php echo $etudiant['date_naissance_format'];?></h3>
 <p><?php echo $etudiant['mail']; ?></p>
 <p><?php echo $etudiant['telephone']; ?></p>
 <p><?php echo $etudiant['contrat']; ?></p>
-<?php endforeach ;?> -->
-
-
-<a class="btn deconnection" href="../admin/logout.php">Se déco</a>
-
-<a class="btn mdp" href="../mpd_form.php">Modifier son mot de passe</a>
+<?php endforeach ;?> 
 
 </section>
 
