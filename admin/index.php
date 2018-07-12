@@ -12,84 +12,83 @@ if (!currentUserHasRole("admin")) {
 getHeader("Espace Admin");
 ?>
 
-<h1>Admin</h1>
-
-<p>Controle de la plateforme</p>
-
-<div>
-
-</div>
-
 <section class="container-page">
-<a><button id="test" name="etudiant" onclick="show1();">
-    Etudiants
-</button></a>
 
-<div>
-    <table id="liste-utilisateurs" style="width:100%">
-        <tr>
-            <th>Avatar</th>
-            <th>Nom</th> 
-            <th>Mail</th>
-            <th>Contrat</th>
-            <th>Valider</th>
-        </tr>
-<?php foreach ($etudiants as $key => $etudiant) : ?>
-            <tr>
-                <td><img src="../uploads/<?php echo $utilisateur['avatar']; ?>"></td>
-            </tr>
-            <tr>
-                <td><?php echo $etudiant['nom'] . ' ' . $etudiant['prenom']; ?></td>
-            </tr>
-            <tr>
-                <td><?php echo $etudiant['mail']; ?></td>
-            </tr>
-            <tr>
-                <td><?php echo $etudiant['contrat']; ?></td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" id="actif-<?php echo $key; ?>" data-id="<?php echo $etudiant['id']; ?>" name="actif" <?php echo ($etudiant['validation'] == 1) ? 'checked' : ''; ?> />
-                    <label for="actif-<?php echo $key; ?>">Actif <i class="fa fa-spinner fa-pulse fa-fw hidden"></i></label>
-                </td>
-            </tr>
-<?php endforeach; ?>
-    </table>
-</div>
+    <h1>Admin</h1>
 
-<div>  
+    <p>Controle de la plateforme</p>
+       
+        <a>
+           <button id="test" name="etudiant" onclick="show1();">
+                Etudiants
+            </button>
+        </a>
 
-    <table id="liste-entreprise" style="width:100%">
-        <tr>
-            <th>Logo</th>
-            <th>Nom</th> 
-            <th>Mail</th>
-            <th>Valider</th>
-        </tr>
-<?php foreach ($entreprises as $key => $entreprise) : ?>
-            <tr>
-                <td><img src=".../uploads/<?php echo $entreprise['avatar']; ?>"></td>
-            </tr>
-            <tr>
-                <td><?php echo $entreprise['nom']; ?></td>
-            </tr>
-            <tr>
-                <td><?php echo $entreprise['mail']; ?></td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox" id="actif-<?php echo $entreprise['id']; ?>" data-id="<?php echo $entreprise['id']; ?>" name="actif" <?php echo ($entreprise['validation'] == 1) ? 'checked' : ''; ?> />
-                    <label for="actif-<?php echo $entreprise['id']; ?>">Actif <i class="fa fa-spinner fa-pulse fa-fw hidden"></i></label>
-                </td>
-            </tr>
-<?php endforeach; ?>
-    </table>
+        <a>
+           <button id="test" name="entreprise" onclick="show2();">
+                Entreprise
+            </button>
+        </a>
+
+
+<div class="liste_admin">
+    <?php foreach ($etudiants as $key => $etudiant) : ?>
+        <div id="liste-utilisateurs" style="width:100%;">
+            <div>
+              <h3>Avatar</h3>
+               <img src="../uploads/<?php echo $utilisateur['avatar']; ?>">
+            </div>
+           
+            <div>
+              <h3>Nom</h3>
+               <p><?php echo $etudiant['nom'] . ' ' . $etudiant['prenom']; ?></p>
+            </div>
+            
+            <div>
+              <h3>Mail</h3>
+               <p><?php echo $etudiant['mail']; ?></p>
+            </div>
+            
+            <div>
+              <h3>Contrat</h3>
+               <p><?php echo $etudiant['contrat']; ?></p>
+            </div>
+               
+            <div>
+              <h3>Valider</h3>
+               <input type="checkbox" id="actif-<?php echo $key; ?>" data-id="<?php echo $etudiant['id']; ?>" name="actif" <?php echo ($etudiant['validation'] == 1) ? 'checked' : ''; ?> />
+               <label for="actif-<?php echo $key; ?>">Actif <i class="fa fa-spinner fa-pulse fa-fw hidden"></i></label>
+            </div>
+        </div>
+    <?php endforeach; ?>
+    
+    
+    <?php foreach ($entreprises as $key => $entreprise) : ?>
+        <div id="liste-entreprise" class="display" style="width:100%;">
+            <div>
+                 <h3>Logo</h3>
+                 <img src=".../uploads/<?php echo $entreprise['avatar']; ?>">
+            </div>
+            <div>
+                 <h3>Nom</h3>
+                 <p><?php echo $entreprise['nom']; ?></p>
+            </div>
+            <div>
+                 <h3>Mail</h3>
+                 <p><?php echo $entreprise['mail']; ?></p>
+            </div>
+            <div>
+                 <h3>Valider</h3>
+                 <input type="checkbox" id="actif-<?php echo $entreprise['id']; ?>" data-id="<?php echo $entreprise['id']; ?>" name="actif" <?php echo ($entreprise['validation'] == 1) ? 'checked' : ''; ?> />
+                <label for="actif-<?php echo $entreprise['id']; ?>">Actif <i class="fa fa-spinner fa-pulse fa-fw hidden"></i></label>
+            </div>
+        </div>
+     <?php endforeach; ?>
 
 </div>
 </section>
 
 
-</div>
 
 
 <a class="btn deconnection" href="../admin/logout.php">Se déco</a>

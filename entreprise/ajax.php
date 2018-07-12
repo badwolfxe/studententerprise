@@ -55,28 +55,32 @@ if (!empty($_POST["creation"]))
   }
     
 ?>
-  <div class="AllSudents">
+<div class="AllSudents">
   <section class="students">
-<?php
-  foreach ($etudiants as $etudiant) : ?>
-<div class="details">
-  <img src="../uploads/<?php echo $etudiant['avatar']?>">
-<div class="details_text">
-  <h3><?php echo $etudiant['nom'] .' ' . $etudiant['prenom'];?></h3>
-  <h3><?php echo $etudiant['date_naissance_format'];?></h3>
-   <p>Je recherche un(e) <?php echo $etudiant['contrat']; ?> de 
-    <?php
-$datetime1 = $etudiant['date_debut'];
-$datetime2 = $etudiant['date_fin'];
-$interval = date_diff(new DateTime($datetime2), new DateTime($datetime1));
-echo $interval->format('%m mois');
-?>
-</p></div>
-<div class="details_contact">
-  <a href="mailto:<?php echo $etudiant['mail']; ?>"><i class="fa fa-3x fa-envelope" aria-hidden="true"></i></a>
-    <a href="tel:<?php echo $etudiant['telephone']; ?>"><i class="fa fa-3x fa-phone-square" aria-hidden="true"></i></a>
-      </div>
-  </div>
+        <?php foreach ($etudiants as $etudiant) : ?>
+        
+    <div class="details">
+      <img src="../uploads/<?php echo $etudiant['avatar']?>">
+      
+        <div class="details_text">
+          <h3><?php echo $etudiant['nom'] .' ' . $etudiant['prenom'];?></h3>
+          <h3><?php echo $etudiant['date_naissance_format'];?></h3>
+               <p>Je recherche un(e) <?php echo $etudiant['contrat']; ?> de 
+               
+                <?php
+                    $datetime1 = $etudiant['date_debut'];
+                    $datetime2 = $etudiant['date_fin'];
+                    $interval = date_diff(new DateTime($datetime2), new DateTime($datetime1));
+                    echo $interval->format('%m mois');
+                ?>
+               </p>
+        </div>
+        
+    <div class="details_contact">
+      <a href="mailto:<?php echo $etudiant['mail']; ?>"><i class="fa fa-3x fa-envelope" aria-hidden="true"></i></a>
+      <a href="tel:<?php echo $etudiant['telephone']; ?>"><i class="fa fa-3x fa-phone-square" aria-hidden="true"></i></a>
+    </div>
+    </div>
   <?php endforeach ; }?>
 
 </section>

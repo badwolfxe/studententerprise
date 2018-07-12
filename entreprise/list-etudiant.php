@@ -1,6 +1,8 @@
 <?php
 require_once '../lib/functions.php';
 require_once '../model/database.php';
+require_once '../layout/footer.php';
+
 
 $etudiants = getAllEtudiant();
 
@@ -9,42 +11,39 @@ getHeader("Espace étudiant");
 
 <section class="head_list">
 
-<button class="btn retour"><a href="index.php">Retour</a></button>
-<h1>Trouvez l'élu</h1>
-<p>Sélectionnez vos besoins</p>
+    <button class="btn retour"><a href="index.php">Retour</a></button>
+        <h1>Trouvez l'élu</h1>
+        <p>Sélectionnez vos besoins</p>
 
-<select id="departement" >
-<option value="" selected>Choisir un département</option>
-<?php
-  $departements = getAllDepartement();
-  foreach ($departements as $departement) :
+    <select id="departement" >
+        <option value="" selected>Choisir un département</option>
+            <?php
+              $departements = getAllDepartement();
+              foreach ($departements as $departement) :
+            ?>
+        <option value=<?php echo $departement['id'].'>'.$departement['label'];?></option>
+              <?php endforeach ;?>
+    </select>
 
-?>
-<option value=<?php echo $departement['id'].'>'.$departement['label'];?></option>
-<?php endforeach ;?>
-</select>
+    <select id="niveau">
+        <option value="" selected>Choisir un niveau d'études</option>
+            <?php
+              $niveaux = getAllNiveau();
+              foreach ($niveaux as $niveau) :
+            ?>
+        <option value=<?php echo $niveau['id'].'>'.$niveau['label'];?></option>
+              <?php endforeach ;?>
+    </select>
 
-<select id="niveau">
-<option value="" selected>Choisir un niveau d'études</option>
-<?php
-  $niveaux = getAllNiveau();
-  foreach ($niveaux as $niveau) :
-
-?>
-<option value=<?php echo $niveau['id'].'>'.$niveau['label'];?></option>
-<?php endforeach ;?>
-</select>
-
-<select id="specialite">
-<option value="" selected>Choisir une spécialité</option>
-<?php
-  $specialites = getAllSpecialite();
-  foreach ($specialites as $specialite) :
-
-?>
-<option value=<?php echo $specialite['id'].'>'.$specialite['label'];?></option>
-<?php endforeach ;?>
-</select>
+    <select id="specialite">
+        <option value="" selected>Choisir une spécialité</option>
+            <?php
+              $specialites = getAllSpecialite();
+              foreach ($specialites as $specialite) :
+            ?>
+        <option value=<?php echo $specialite['id'].'>'.$specialite['label'];?></option>
+              <?php endforeach ;?>
+    </select>
 
 </section>
 
@@ -55,7 +54,7 @@ getHeader("Espace étudiant");
 
 </section>
 
-<?php require_once '../layout/footer.php'; ?>
+
 
 <script type="text/javascript">
 	$(document).ready(function()

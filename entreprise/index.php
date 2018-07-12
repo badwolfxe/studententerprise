@@ -17,14 +17,14 @@ getHeader("Espace entreprise");
 
     <h1>Entreprise</h1>
 
-    <h3>Mes infos</h3>
+        <h3>Mes infos</h3>
     <div class="container-avatar">  
         <img class="image-avatar" src="<?php echo SITE_URL; ?>uploads/<?php echo $entreprise['avatar'] ?>">
     </div>
     <a class="btn" href="<?php echo SITE_URL; ?>entreprise/update-avatar.php">Modifier ou ajouter mon profil</a>
 
 
-    <h3><?php echo $entreprise['nom']; ?></h3>
+        <h3><?php echo $entreprise['nom']; ?></h3>
     <p><?php echo $entreprise['mail']; ?></p>
 
     <a class="btn mdp" href="../entreprise/list-etudiant.php">Trouver l'élu</a>
