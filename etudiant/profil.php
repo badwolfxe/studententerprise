@@ -12,6 +12,7 @@ $etudiant = getEtudiant($id);
 $departements = getAllDepartementByEtudiant($id);
 $specialites = getAllSpecialiteByEtudiant($id);
 
+
 ?>
 
 <section class="container-page profil">
@@ -23,21 +24,21 @@ $specialites = getAllSpecialiteByEtudiant($id);
 <h3><?php echo $etudiant['nom'] .' ' . $etudiant['prenom'];?></h3>
 <h3><?php echo $etudiant['date_naissance_format'];?></h3>
 
-<p><?php echo $etudiant['mail']; ?></p>
+<a href="mailto:<?php echo $etudiant['mail']?>"><?php echo $etudiant['mail']; ?></a>
 <p><?php echo $etudiant['telephone']; ?></p>
-<h3>Niveau d'études</h3>
+<h3>Niveau d'études :</h3>
 <p>Je suis en <?php echo $etudiant['labelniveau'] ?></p>
 
 
-<h3>Mes spécialités</h3>
+<h3>Mes spécialités :</h3>
 <?php foreach ($specialites as $specialite) : ?>
-<p><?php echo $specialite['label']; ?></p>
+<p id="specialite"><?php echo $specialite['label']; ?></p>
 <?php endforeach ;?>
 
-<h3>Mon CV</h3>
-<a href="<?php echo SITE_URL ; ?>uploads/<?php echo $etudiant['cv']; ?>"><?php echo $etudiant['cv']; ?></a>
-<h3>Ma lettre de motivation</h3>
-<a href="<?php echo SITE_URL ; ?>uploads/<?php echo $etudiant['lm']; ?>"><?php echo $etudiant['lm']; ?></a>
+<h3>Mon CV :</h3>
+<a class="importation" href="<?php echo SITE_URL ; ?>uploads/<?php echo $etudiant['cv']; ?>"><?php echo $etudiant['cv']; ?></a>
+<h3>Ma lettre de motivation :</h3>
+<a class="importation" href="<?php echo SITE_URL ; ?>uploads/<?php echo $etudiant['lm']; ?>"><?php echo $etudiant['lm']; ?></a>
 
 
 <a class="btn btnbis deconnection" href="update-profil.php">Modifier mon profil</a>

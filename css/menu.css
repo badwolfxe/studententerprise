@@ -1,0 +1,43 @@
+.zone-etudiants {
+    border-left: 1px solid #000;
+    padding-left : 30px;
+}
+
+.zone-etudiants h3{
+    text-transform: uppercase;
+    
+}
+
+#specialite{
+    background-color:#EFEFEF;
+    display:inline-block;
+    padding:10px 10px;
+    margin-top:0px;
+    border-radius:10px;
+}
+
+.container-page{
+    box-shadow: 0px 5px 5px rgba(220, 220, 220, 1);
+    margin-top:40px;
+    padding-left:20px;
+}
+
+a.btnbis {
+    margin-top:20px;
+}
+
+a{
+    color:#000;
+}
+
+a.importation {
+    background-color:#EFEFEF;
+    padding:10px 10px;
+    border-radius:10px;
+    
+}
+
+.formulaire div{
+    display:flex;
+    flex:70%;
+}
