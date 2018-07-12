@@ -3,20 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< Updated upstream
-            <file>file:/Applications/MAMP/htdocs/Coraline-Perrot/studententerprise/entreprise/update-avatar.php</file>
-            <file>file:/Applications/MAMP/htdocs/Coraline-Perrot/studententerprise/etudiant/profil.php</file>
-            <file>file:/Applications/MAMP/htdocs/Coraline-Perrot/studententerprise/entreprise/index.php</file>
-            <file>file:/Applications/MAMP/htdocs/Coraline-Perrot/studententerprise/etudiant/index.php</file>
-            <file>file:/Applications/MAMP/htdocs/Coraline-Perrot/studententerprise/entreprise/query_avatar.php</file>
-=======
             <file>file:/Applications/MAMP/htdocs/studententerprise/layout/menu-etudiant.php</file>
+            <file>file:/Applications/MAMP/htdocs/studententerprise/model/entity/etudiant_entity.php</file>
             <file>file:/Applications/MAMP/htdocs/studententerprise/mpd_form.php</file>
             <file>file:/Applications/MAMP/htdocs/studententerprise/css/style.css</file>
-            <file>file:/Applications/MAMP/htdocs/studententerprise/test.php</file>
-            <file>file:/Applications/MAMP/htdocs/studententerprise/model/entity/departement_entity.php</file>
+            <file>file:/Applications/MAMP/htdocs/studententerprise/admin/index.php</file>
+            <file>file:/Applications/MAMP/htdocs/studententerprise/css/menu.css</file>
+            <file>file:/Applications/MAMP/htdocs/studententerprise/layout/header.php</file>
             <file>file:/Applications/MAMP/htdocs/studententerprise/etudiant/profil.php</file>
->>>>>>> Stashed changes
+            <file>file:/Applications/MAMP/htdocs/studententerprise/etudiant/update-avatar.php</file>
+            <file>file:/Applications/MAMP/htdocs/studententerprise/etudiant/update-profil.php</file>
         </group>
     </open-files>
 </project-private>

@@ -112,7 +112,8 @@ function getEtudiantQuery() {
                 etudiant.actif,
                 etudiant.niveau_etude_id,
                 utilisateur.avatar AS avatar,
-                utilisateur.mail AS mail
+                utilisateur.mail AS mail,
+                utilisateur.valide AS validation
             FROM etudiant
             INNER JOIN utilisateur ON utilisateur.id = etudiant.id
             LEFT JOIN contrat ON etudiant.contrat_id = contrat.id

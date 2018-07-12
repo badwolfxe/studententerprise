@@ -3,7 +3,7 @@ require_once '../lib/functions.php';
 require_once '../model/database.php';
 
 $entreprises = getAllEntreprise();
-$etudiants = getAllEtudiant();
+$etudiants = getAllEtudiants();
 
 if (!currentUserHasRole("admin")) {
     header("Location: ../index.php");
