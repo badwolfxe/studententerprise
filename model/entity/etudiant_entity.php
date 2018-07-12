@@ -14,7 +14,7 @@ niveau_etude.id AS niveau,
 niveau_etude.label AS labelniveau,
 contrat.label AS contrat,
 utilisateur.mail AS mail,
-utilisateur.valide AS publication,
+utilisateur.valide AS validation,
 utilisateur.avatar AS avatar
 FROM etudiant
 INNER JOIN utilisateur ON utilisateur.id = etudiant.id
