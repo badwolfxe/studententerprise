@@ -7,9 +7,12 @@
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/font-awesome.min.css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/jquery.datetimepicker.min.css">
         <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/style.css">
         <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/menu.css">
         <link rel="stylesheet" href="<?php echo SITE_URL; ?>css/style_liste.css">
+        
+        
     </head>
     <body>
 

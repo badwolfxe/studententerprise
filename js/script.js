@@ -1,4 +1,10 @@
 jQuery(document).ready(function ($) {
+    
+    
+jQuery('#datetimepicker').datetimepicker();
+jQuery('#datetimepicker1').datetimepicker();
+jQuery('#datetimepicker2').datetimepicker();
+    
 var checkboxes = document.getElementById('liste-utilisateurs').querySelectorAll('input[type=checkbox]');
 
 for (var i = 0; i < checkboxes.length; i++) {

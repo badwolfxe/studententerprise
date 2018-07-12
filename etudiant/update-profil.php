@@ -29,8 +29,7 @@ getHeader("Profil");
         <br>
         
         <label>Date de Naissance</label>
-        <input type="datenaissance" name="datenaissance" id="datepicker" class="form-control" value="<?php echo $etudiant["date_naissance_format"]; ?>" >
-        
+        <input type="datenaissance" name="datenaissance" id="datetimepicker" type="text" value="<?php echo $etudiant["date_naissance_format"]; ?>">
         <br>
         
         <label>Email</label>
@@ -60,12 +59,15 @@ getHeader("Profil");
         <br>
         
         <label>Date début de contrat</label>
-        <input type="debut_contrat" name="debut_contrat" id="telephone" class="form-control" value="<?php echo $etudiant["date_debut_contrat"]; ?>" >
+        <input type="debut_contrat" name="debut_contrat" id="datetimepicker1" type="text" value="<?php echo $etudiant["date_debut_contrat"]; ?>">
+       
         
         <br>
 
         <label>Date fin de contrat</label>
-        <input type="fin_contrat" name="fin_contrat" id="telephone" class="form-control" value="<?php echo $etudiant["date_fin_contrat"]; ?>" >
+        
+        <input type="fin_contrat" name="fin_contrat" id="datetimepicker2" type="text" value="<?php echo $etudiant["date_fin_contrat"]; ?>">
+       
         
         <br>
         
