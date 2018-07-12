@@ -49,5 +49,21 @@ a.importation {
 }
 
 input.btn {
-    background:#975;
+    background: #975;
+    padding: 20px 50px;
+    display: block;
+    max-width: 200px;
+    text-align:center;
+    margin-top:20px;
+    color: #FFF;
+    border: 1px solid #FFF;
+    transition: all, .5s;
+}
+
+
+input.btn:hover {
+    color: #975;
+    border: 1px solid #975;
+    background: #FFF;
+    transition: all, .5s;
 }
