@@ -344,7 +344,8 @@ div.zone-etudiants {
 
 /* deuxieme menu */
 
-section.container-page.profil {
+section.container-page.profil,
+section.container-page.update-profil{
     display: flex;
 }
 
