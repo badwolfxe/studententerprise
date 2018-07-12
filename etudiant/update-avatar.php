@@ -9,8 +9,9 @@ if (!currentUserHasRole("etudiant")) {
 
 getHeader("Profil");
 ?>
-<section class="container-page">
-    <form action="query_avatar.php" method="post" class="form-signin inscription" enctype="multipart/form-data">
+<section class="container-page update-avatar">
+    <?php require_once '../layout/menu-etudiant.php';?>
+    <form action="query_avatar.php" method="post" class="form-signin inscription formulaire" enctype="multipart/form-data">
         <h1 class="h3 mb-3 font-weight-normal">Modifier mon avatar</h1>
 
         <br>

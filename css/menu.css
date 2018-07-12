@@ -114,3 +114,7 @@ input{
     margin-bottom:10px;
     margin-left:10px;
 }
+
+.update-avatar {
+    display:flex;
+}

@@ -21,7 +21,7 @@ getHeader("Espace étudiant");
             <img class="image-avatar" src="<?php echo SITE_URL; ?>uploads/<?php echo $etudiant['avatar'] ?>">
         </div> 
 
-        <a class="btn btnbis" href="update-avatar.php">Modifier ou ajouter mon profil</a>
+        <a class="btn btnbis" href="update-avatar.php">Modifier ou ajouter mon avatar</a>
         <div class="informations">
             <h3><?php echo $etudiant['nom'] . ' ' . $etudiant['prenom']; ?></h3>
             <p><?php echo $etudiant['date_naissance_format']; ?></p>
